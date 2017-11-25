@@ -1,0 +1,285 @@
+<div class="page-header page-header-default">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - Add Staff Member</h4>
+      <a class="heading-elements-toggle"><i class="icon-more"></i></a></div>
+    <div class="heading-elements">
+
+    </div>
+  </div>
+
+  <div class="breadcrumb-line"><a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+    <ul class="breadcrumb">
+      <li><a routerLink="/home"><i class="icon-home2 position-left"></i> Home</a></li>
+      <li><a routerLink="/user/staff"><i class="icon-home2 position-left"></i> Staff Members</a></li>
+      <li class="active">Add Staff Member</li>
+    </ul>
+
+    <app-settings></app-settings>
+    <ul class="breadcrumb-elements">
+      <li *ngIf="disabled == ''">
+        <button class="ui instagram submit button" type="submit" (click)="submit()">
+          Save
+          <i class="icon-database-insert position-right"></i>
+        </button>
+      </li>
+      <li *ngIf="disabled == 'disabled'">
+        <button class="ui instagram submit button" type="button" (click)="submit()">
+          <i class="icon-pencil5 position-left"></i>
+          Edit
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="content">
+  <div class="cbody">
+    <div class="tabbable animated fadeInRight">
+
+      <div class="tabbable">
+
+                <div class="panel panel-flat">
+                  <form class="modal-body ui form">
+                    <a class="ui blue ribbon label">Add Staff</a>
+                    <div class="panel-heading">
+                      <div class="heading-elements">
+                        <div class="btn-group save-div" *ngIf="disabled == ''">
+                          <button class="ui instagram submit button save-button" type="submit">
+                            Save
+                            <i class="icon-database-insert position-right"></i>
+                          </button>
+                        </div>
+
+                        <div class="btn-group save-div" *ngIf="disabled == 'disabled'">
+                          <button class="ui instagram submit button save-button" type="button" (click)="disabled=''">
+                            <i class="icon-pencil5 position-left"></i>
+                            Edit
+                          </button>
+                        </div>
+
+
+                      </div>
+                    </div>
+
+                    <div class="panel-body">
+                      <div class="ui raised segment">
+
+                        <div class="ui grid">
+                          <div class="four wide column">
+                            <div class="profileImg" [hidden]="(disabled == 'disabled')">
+                              <div class="ui small circular image profile">
+                                <div class="ui dimmer">
+                                  <div class="content">
+                                    <div class="center">
+                                      <input id="profileImg" type="file" class="pupload">
+                                    </div>
+                                  </div>
+                                </div>
+                                <img src="{{profileImage}}">
+                              </div>
+                            </div>
+                            <div class="profileImg" [hidden]="(disabled != 'disabled')">
+                              <div class="ui small circular image">
+                                <img src="{{profileImage}}">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="twelve wide column">
+                            <a class="ui blue left ribbon label">Staff Member Details</a>
+                            <br/>
+                            <br/>
+                            <div class="field">
+                              <div class="three fields">
+                                <div class="field {{disabled}}">
+                                  <label>Name</label>
+                                  <div class="ui left icon input">
+                                    <input name="firstName" id="firstName" type="text" class="validate" placeholder="Name"
+                                           [(ngModel)]="staff.staffmember.firstName">
+                                    <i class="user icon"></i>
+                                  </div>
+                                </div>
+                                <div class="field {{disabled}}">
+                                  <label>Email</label>
+                                  <div class="ui left icon input">
+                                    <input name="email" id="email" type="text" class="validate" placeholder="Email"
+                                           [(ngModel)]="staff.staffmember.email">
+                                    <i class="mail icon"></i>
+                                  </div>
+                                </div>
+                                <div class="field {{disabled}}" hidden>
+                                  <label>Password</label>
+                                  <div class="ui left icon input">
+                                    <input name="password" id="password" type="text" class="validate" placeholder="Password"
+                                           [(ngModel)]="staff.staffmember.password">
+                                    <i class="lock icon"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="field">
+                              <div class="three fields">
+                                <div class="field {{disabled}}">
+                                  <label>Phone Number</label>
+                                  <div class="ui left icon input">
+                                    <input name="mobile" id="mobile" type="text" class="validate"
+                                           placeholder="Mobile Number"
+                                           [(ngModel)]="staff.staffmember.mobile">
+                                    <i class="large mobile icon"></i>
+                                  </div>
+                                </div>
+                                <div class="field {{disabled}}">
+                                  <label>Gender</label>
+                                  <div class="ui selection dropdown gender">
+                                    <input type="hidden" name="gender" id="gender" [(ngModel)]="staff.staffmember.gender">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">Gender</div>
+                                    <div class="menu">
+                                      <div class="item" data-value="male" data-text="Male">
+                                        <i class="male icon"></i>
+                                        Male
+                                      </div>
+                                      <div class="item" data-value="female" data-text="Female">
+                                        <i class="female icon"></i>
+                                        Female
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="field {{disabled}}">
+                                  <label>Role</label>
+                                  <div class="ui selection dropdown role">
+                                    <input type="hidden" name="role" id="role" [(ngModel)]="staff.staffrole">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">Role</div>
+                                    <div class="menu">
+                                      <div class="item" data-value="Manager" data-text="Manager">
+                                        Manager
+                                      </div>
+                                      <div class="item" data-value="Supervisor" data-text="Supervisor">
+                                        Supervisor
+                                      </div>
+                                      <div class="item" data-value="Attender" data-text="Attender">
+                                        Attender
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="field">
+                              <div class="three fields">
+                                <div class="field {{disabled}}">
+                                  <label>PG Name</label>
+
+                                  <select class="ui selection dropdown pgnames" id="pgnames">
+                                    <option value="">PG Name</option>
+                                    <option value="{{pgname?._id}}" *ngFor="let pgname of pgnameList;let last=last">
+                                      {{pgname?.pgname}}
+                                    </option>
+                                    <option class="text-bold" *ngIf="pgnameList.length==0" disabled>No records found.</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <a class="ui blue ribbon label">Staff Member Permissions</a>
+                        <br/>
+                        <br/>
+                        <div class="ui grid">
+                          <div class="five wide column">
+                            <div class="grouped fields">
+                              <div class="field {{disabled}}">
+                                <div class="ui checkbox">
+                                  <input type="checkbox" name="public" [(ngModel)]="staff.permissions.roomManagement">
+                                  <label>Room Management</label>
+                                </div>
+                              </div>
+                              <div class="field {{disabled}}">
+                                <div class="ui checkbox">
+                                  <input type="checkbox" name="tenantManagement"
+                                         [(ngModel)]="staff.permissions.tenantManagement">
+                                  <label>Manage Tenants</label>
+                                </div>
+                              </div>
+                              <div class="field {{disabled}}">
+                                <div class="ui checkbox">
+                                  <input type="checkbox" name="foodManagement"
+                                         [(ngModel)]="staff.permissions.foodManagement">
+                                  <label>Food Management</label>
+                                </div>
+                              </div>
+                              <div class="field {{disabled}}">
+                                <div class="ui checkbox">
+                                  <input type="checkbox" name="manageRequests"
+                                         [(ngModel)]="staff.permissions.manageRequests">
+                                  <label>Manage Requests</label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="five wide column">
+                            <div class="grouped fields">
+                              <div class="field {{disabled}}">
+                                <div class="ui checkbox">
+                                  <input type="checkbox" name="manageCommunications"
+                                         [(ngModel)]="staff.permissions.manageCommunications">
+                                  <label>Manage Communications</label>
+                                </div>
+                              </div>
+                              <div class="field {{disabled}}">
+                                <div class="ui checkbox">
+                                  <input type="checkbox" name="rules" [(ngModel)]="staff.permissions.rules">
+                                  <label>Rules</label>
+                                </div>
+                              </div>
+                              <div class="field {{disabled}}">
+                                <div class="ui checkbox">
+                                  <input type="checkbox" name="alerts" [(ngModel)]="staff.permissions.alerts">
+                                  <label>Alerts</label>
+                                </div>
+                              </div>
+                              <div class="field {{disabled}}">
+                                <div class="ui checkbox">
+                                  <input type="checkbox" name="refundPolicy" [(ngModel)]="staff.permissions.refundPolicy">
+                                  <label>Cancellation or Refund Policy</label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="five wide column">
+                            <div class="grouped fields">
+                              <div class="field {{disabled}}">
+                                <div class="ui checkbox">
+                                  <input type="checkbox" name="locality" [(ngModel)]="staff.permissions.locality">
+                                  <label>Locality</label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="panel panel-flat border-top-warning">
+                  <div class="panel-heading">
+                    <!-- <h6 class="panel-title"><span class="text-semibold">
+                       <span>Ads by </span> </span> OursPG</h6>-->
+                  </div>
+
+                  <div class="panel-body">
+
+                  </div>
+                </div>
+              </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <app-footer></app-footer>
+  <!-- /footer -->
+</div>
+

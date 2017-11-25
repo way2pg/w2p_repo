@@ -1,0 +1,34 @@
+fieldset {
+  margin: 0;
+  min-width: 0;
+}
+fieldset, legend {
+  padding: 0;
+  border: 0;
+}
+legend {
+  width: 100%;
+  margin-bottom: 20px;
+  line-height: inherit;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.table-empty{
+  text-align: center;
+  color: #00B5AD;
+  font-size: larger;
+}
+
+.bg-info{
+  background-color: #37474F!important;
+  border-color: #37474F!important;
+  color: #fff;
+  text-align: left;
+}
+
+.btn-info {
+  color: #fff;
+  background-color: #37474F !important;
+  border-color: #37474F !important;
+}

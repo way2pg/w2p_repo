@@ -1,0 +1,436 @@
+<div class="page-header page-header-default">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - Search PG</h4>
+      <a class="heading-elements-toggle"><i class="icon-more"></i></a></div>
+    <div class="heading-elements">
+      <div class="heading-btn-group">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="breadcrumb-line"><a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+    <ul class="breadcrumb">
+      <li><a [routerLink]="['/home']"><i class="icon-home2 position-left"></i> Home</a></li>
+      <li class="active">Search</li>
+    </ul>
+
+    <app-settings></app-settings>
+  </div>
+</div>
+<div class="content">
+  <div class="tabbable">
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row cbody">
+
+          <div class="container-detached">
+            <div class="content-detached">
+              <table class="table datatable-basic animated fadeInRight">
+                <thead>
+                <tr>
+                  <th></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr *ngFor="let pg of pgdetails;let last=last;let i = index ">
+                  <td>
+                    <div class="panel panel-flat blog-horizontal blog-horizontal-2">
+                      <div class="panel-heading">
+                        <h6 class="panel-title "><span class="text-semibold">{{pg.pgname}}</span></h6>
+                      </div>
+                      <div class="panel-body">
+                        <div class="thumb ImagePrevSection">
+                          <div class="owl-carousel pre-slider">
+                            <div class="pre-item" *ngFor="let image of pg.images;let last=last">
+                              <img [src]="imageURL+image.fileid"
+                                   alt="{{image.description}}">
+                            </div>
+                          </div>
+
+                          <!-- house image section -->
+                        </div>
+
+                        <div class="blog-preview">
+                          <div class="content-group-sm media blog-title stack-media-on-mobile text-left">
+                            <div class="media-body">
+                              <h5 class="text-bold no-margin"><a href="#" class="text-default"></a></h5>
+
+                              <!--<ul class="no-margin text-muted" style="list-style-type: none;">
+                                <li>Owner - <a href="#">{{pg.createdBy.firstName}}</a></li>
+                                <li>Added - </li>
+                                <li>382 Tenants are Joined.</li>
+                                <li>Accomodation For</li>
+                                <li><i class="fa fa-map-marker position-left"></i>{{pg.locality}}</li>
+                              </ul>-->
+
+                              <div class="row">
+                                <p class="sharingtype">
+                                  <!--<span class="ng-hide">Not Available</span>-->
+                          <span>
+                           <i class="icon-user-check position-left"></i> PG Owner &nbsp; &nbsp;<a>{{pg.createdBy.firstName}}</a>
+                          </span>
+                                </p>
+                              </div>
+                              <div class="row">
+                                <p class="sharingtype">
+                                  <!--<span class="ng-hide">Not Available</span>-->
+                          <span>
+                            <i class="icon-calendar position-left"></i>&nbsp; Created On &nbsp; &nbsp;{{pg.createdAt | date: 'dd-MM-yyyy'}}
+                          </span>
+                                </p>
+                              </div>
+                              <div class="row">
+                                <p class="sharingtype">
+                                  <!--<span>
+                                    <i class="icon-collaboration position-left"></i>&nbsp; {{pg?.tenants?.length}} Tenants are Joined.
+                                  </span>-->
+                                </p>
+                              </div>
+                              <div class="row">
+                                <p class="sharingtype">
+                          <span>
+                            Accomodation For
+                          </span> <br/>
+                          <span *ngIf="pg.roomAvailableFor == 'Both' || pg.roomAvailableFor == 'Male'"> <i
+                            class="icon-checkmark3 text-blue position-left"></i><i class="icon-man position-left"></i>Boys &nbsp;</span>
+                          <span *ngIf="pg.roomAvailableFor == 'Both' || pg.roomAvailableFor == 'Female'"> <i
+                            class="icon-checkmark3 text-blue position-left"></i><i class="icon-woman position-left"></i>Girls &nbsp;</span>
+                          <span *ngIf="pg.roomAvailableFor == 'Both'"> <i
+                            class="icon-checkmark3 text-blue position-left"></i><i
+                            class="icon-man-woman position-left"></i>Both &nbsp;</span>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="panel-footer panel-footer-transparent"><a class="heading-elements-toggle"><i
+                        class="icon-more"></i></a>
+                        <div class="heading-elements">
+                          <ul class="list-inline list-inline-separate heading-text text-muted">
+                            <li><a class="text-default"><i class="icon-eye4 position-left"></i> 438</a></li>
+                            <li><a class="text-muted" (click)="mComments(pg,i)"><b><i
+                              class="icon-comments position-left"></i> </b> &nbsp; {{pg?.comments?.length}} </a>
+                            </li>
+                            <li><a class="text-primary"><i class="icon-thumbs-up2 position-left"></i></a> 320
+                            </li>
+                            <li><a class="text-muted"><i class="icon-thumbs-down2 position-left"></i></a> 14
+                            </li>
+                          </ul>
+
+                          <a routerLink="/search/pg/details/{{pg._id}}" class="heading-text pull-right">See
+                            Details <i
+                              class="icon-arrow-right14 position-right"></i></a>
+                        </div>
+                        <div class="panel-body" [hidden]="i != selectedRow">
+                          <div class="panel-body">
+                            <div class="panel-body">
+                              <ul class="media-list chat-list content-group" id="content-group-{{i}}">
+                                <li [ngClass]="even? 'media':'media reversed'"
+                                    *ngFor="let comment of pgcomments; let even = even; let odd = odd">
+                                  <div class="media-left" *ngIf="even">
+                                    <a [routerLink]="['/user/profile',comment?.user?._id]">
+                                      <img [src]="imageURL + comment?.user?.profileImg"
+                                           class="img-circle img-md"
+                                           alt="">
+                                    </a>
+                                  </div>
+
+                                  <div class="media-body" *ngIf="even">
+                                    <div class="media-heading">
+                                      <a href="#" class="text-semibold">{{comment.user.firstName}}</a>
+                                    </div>
+                                    <div class="media-content">{{comment.comment}}
+                                    </div>
+                                    <span
+                                      class="media-annotation display-block mt-10">{{fromNow(comment.createdAt)}}</span>
+                                  </div>
+
+                                  <div class="media-body" *ngIf="odd">
+                                    <div class="media-heading">
+                                      <a href="#" class="text-semibold">{{comment.user.firstName}}</a>
+
+                                    </div>
+                                    <div class="media-content">{{comment.comment}}
+                                    </div>
+                                    <span
+                                      class="media-annotation display-block mt-10">{{fromNow(comment.createdAt)}}</span>
+                                  </div>
+
+                                  <div class="media-right" *ngIf="odd">
+                                    <a [routerLink]="['/user/profile',comment?.user?._id]">
+                                      <img [src]="imageURL + comment?.user?.profileImg"
+                                           class="img-circle img-md"
+                                           alt="">
+                                    </a>
+                                  </div>
+
+                                </li>
+                              </ul>
+
+                                      <textarea name="enter-message" class="form-control content-group" rows="3"
+                                                cols="1" placeholder="Enter your message..."
+                                                [(ngModel)]="comments.comment" *ngIf="isLoggedIn()"></textarea>
+
+                              <div class="row" *ngIf="isLoggedIn()">
+                                <div class="col-xs-6">
+
+                                </div>
+
+                                <div class="col-xs-6 text-right">
+                                  <button type="button" class="btn bg-teal-400 btn-rounded"
+                                          (click)="post_comment(pg,i)">
+                                    <b><i class="icon-pencil7"></i></b>
+                                    Post Your Comment
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+              <br/>
+            </div>
+          </div>
+          <div class="sidebar-detached border-top-warning">
+            <div class="sidebar sidebar-default sidebar-separate">
+              <div class="sidebar-content">
+
+                <!-- Filter -->
+                <div class="sidebar-category search-sidebar-category">
+                  <div class="category-title">
+                    <span>Find PG</span>
+                  </div>
+
+                  <div class="category-content">
+                    <form action="#">
+                      <div class="has-feedback has-feedback-left form-group">
+                        <input type="text" class="form-control input-xlg" name="search_data" id="search_data"
+                               placeholder="Type and hit Enter" [(ngModel)]="search_data" (keydown)="show($event)">
+                        <div class="form-control-feedback">
+                          <i class="icon-search4 text-size-base text-muted"></i>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <h5><i class="icon-users2 position-left"></i> Accommodation For</h5>
+                        <div class="radio">
+                          <label class="display-block">
+                            <input type="radio" name="pgfor" class="styled" value="Female"
+                                   [(ngModel)]="roomAvailableFor"
+                                   (change)="roomAvailableFor;leftSearch()">
+                            Girls
+                          </label>
+                        </div>
+
+                        <div class="radio">
+                          <label class="display-block">
+                            <input type="radio" name="pgfor" class="styled" value="Male"
+                                   [(ngModel)]="roomAvailableFor" (change)="roomAvailableFor;leftSearch()">
+                            Boys
+                          </label>
+                        </div>
+
+                        <div class="radio">
+                          <label class="display-block">
+                            <input type="radio" name="pgfor" class="styled" value="Both"
+                                   [(ngModel)]="roomAvailableFor" (change)="roomAvailableFor;leftSearch()">
+                            Both
+                          </label>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <h5><i class="fa fa-building position-left"></i> Accommodation Type</h5>
+                        <div class="radio">
+                          <label class="display-block">
+                            <input type="radio" name="pgtype" class="styled" value="single" [(ngModel)]="sharingType"
+                                   (change)="sharingType;leftSearch()">
+                            Single Sharing
+                          </label>
+                        </div>
+
+                        <div class="radio">
+                          <label class="display-block">
+                            <input type="radio" name="pgtype" class="styled" value="double" [(ngModel)]="sharingType"
+                                   (change)="sharingType;leftSearch()">
+                            Two Sharing
+                          </label>
+                        </div>
+
+                        <div class="radio">
+                          <label class="display-block">
+                            <input type="radio" name="pgtype" class="styled" value="triple" [(ngModel)]="sharingType"
+                                   (change)="sharingType;leftSearch()">
+                            Three Sharing
+                          </label>
+                        </div>
+                        <div class="radio">
+                          <label class="display-block">
+                            <input type="radio" name="pgtype" class="styled" value="four" [(ngModel)]="sharingType"
+                                   (change)="sharingType;leftSearch()">
+                            Four Sharing
+                          </label>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <h6><i class="fa fa-th-list position-left"></i> Monthly Budget</h6>
+                        <br/>
+                        <div class="budget">
+                          <div class="ui-slider-range mb-5" id="ui-slider-range"></div>
+                        </div>
+                        <p class="content-group text-muted">
+                          <label for="amount">Price Range</label>
+                          <input type="text" id="amount" readonly style="border:0; color:#00B5AD; font-weight:bold;">
+                        </p>
+                      </div>
+                      <div class="form-group">
+                        <h5><i class="fa fa-sliders position-left"></i> Basic Facilities</h5>
+                        <div class="checkbox">
+                          <label class="display-block">
+                            <input type="checkbox" class="styled" [(ngModel)]="foodIncluded" value="Yes"
+                                   name="foodIncluded"
+                                   (change)="foodIncluded;leftSearch()">
+                            Food
+                          </label>
+                        </div>
+
+                        <div class="checkbox">
+                          <label class="display-block">
+                            <input type="checkbox" class="styled" [(ngModel)]="wifi" value="true" name="wifi"
+                                   (change)="wifi;leftSearch()">
+                            Internet/WIFI
+                          </label>
+                        </div>
+
+                        <div class="checkbox">
+                          <label class="display-block">
+                            <input type="checkbox" class="styled" [(ngModel)]="ac" value="true" name="ac"
+                                   (change)="ac;leftSearch()">
+                            A/C Room
+                          </label>
+                        </div>
+
+                        <div class="checkbox">
+                          <label class="display-block">
+                            <input type="checkbox" class="styled" [(ngModel)]="laundray" value="true" name="laundray"
+                                   (change)="laundray;leftSearch()">
+                            Laundry
+                          </label>
+                        </div>
+                        <div class="checkbox">
+                          <label class="display-block">
+                            <input type="checkbox" class="styled" [(ngModel)]="tv" value="true" name="tv"
+                                   (change)="tv;leftSearch()">
+                            Television/DTH
+                          </label>
+                        </div>
+                        <div class="checkbox">
+                          <label class="display-block">
+                            <input type="checkbox" class="styled" [(ngModel)]="lift" value="true" name="lift"
+                                   (change)="lift;leftSearch()">
+                            Lift Facility
+                          </label>
+                        </div>
+                        <div class="checkbox">
+                          <label class="display-block">
+                            <input type="checkbox" class="styled" [(ngModel)]="gyser" value="true" name="gyser"
+                                   (change)="gyser;leftSearch()">
+                            Hot Water
+                          </label>
+                        </div>
+                        <div class="checkbox">
+                          <label class="display-block">
+                            <input type="checkbox" class="styled" [(ngModel)]="attachedToilet" value="true"
+                                   name="attachedToilet"
+                                   (change)="attachedToilet;leftSearch()">
+                            Attached Toilet
+                          </label>
+                        </div>
+                        <div class="checkbox">
+                          <label class="display-block">
+                            <input type="checkbox" class="styled" [(ngModel)]="roomCleaning" value="true"
+                                   name="roomCleaning"
+                                   (change)="roomCleaning;leftSearch()">
+                            Room Cleaning
+                          </label>
+                        </div>
+                        <div class="checkbox">
+                          <label class="display-block">
+                            <input type="checkbox" class="styled" [(ngModel)]="wardenFacility" value="true"
+                                   name="wardenFacility"
+                                   (change)="wardenFacility;leftSearch()">
+                            Warden Facility
+                          </label>
+                        </div>
+                      </div>
+                      <!--<div class="form-group">
+                        <h6><i class="fa fa-th-list position-left"></i> Additional Facilities</h6>
+                        <div class="checkbox">
+                          <label class="display-block">
+                            <input type="checkbox" class="styled">
+                            Bike Parking
+                          </label>
+                        </div>
+
+                        <div class="checkbox">
+                          <label class="display-block">
+                            <input type="checkbox" class="styled">
+                            Car Parking
+                          </label>
+                        </div>
+
+                        <div class="checkbox">
+                          <label class="display-block">
+                            <input type="checkbox" class="styled">
+                            Self Cooking
+                          </label>
+                        </div>
+
+                        <div class="checkbox">
+                          <label class="display-block">
+                            <input type="checkbox" class="styled">
+                            Refrigerator
+                          </label>
+                        </div>
+                        <div class="checkbox">
+                          <label class="display-block">
+                            <input type="checkbox" class="styled">
+                            Washing Machine
+                          </label>
+                        </div>
+                        <div class="checkbox">
+                          <label class="display-block">
+                            <input type="checkbox" class="styled">
+                            Security/Watchman
+                          </label>
+                        </div>
+                      </div>-->
+                    </form>
+                  </div>
+                </div>
+                <!-- /filter -->
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <app-footer></app-footer>
+  <!-- /footer -->
+</div>
+

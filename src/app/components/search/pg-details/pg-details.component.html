@@ -1,0 +1,338 @@
+<div class="page-header page-header-default">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - Search PG</h4>
+      <a class="heading-elements-toggle"><i class="icon-more"></i></a></div>
+    <div class="heading-elements">
+      <div class="heading-btn-group">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="breadcrumb-line"><a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+    <ul class="breadcrumb">
+      <li><a [routerLink]="['/home']"><i class="icon-home2 position-left"></i> Home</a></li>
+      <li><a [routerLink]="['/search']"><i class=" icon-search4 position-left"></i> Search</a></li>
+      <li class="active">{{pgdetails[0]?.pgname}}</li>
+    </ul>
+
+    <app-settings></app-settings>
+  </div>
+</div>
+<div class="content">
+  <table class="table datatable-basic" *ngIf="!isDataAvailable">
+    <thead>
+    <tr>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr *ngFor="let pg of pgdetails;let last=last" [datatable]="last ? true : false">
+      <td>
+        <div class="row"
+             [owl]="!isDataAvailable ? (last ? true : false):false">
+          <div *ngFor="let room of pg.rooms;let last=last">
+            <div class="panel panel-flat blog-horizontal blog-horizontal-2">
+              <div class="panel-heading">
+                <h6 class="panel-title "><span
+                  class="text-bold">{{pg.pgname}}</span>
+                </h6>
+                <div class="heading-elements">
+                  Room Type - <span
+                  class="text-bold" style="color: #00B5AD;">{{room.roomType}}</span>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div class="thumb ImagePrevSection">
+                  <!-- house image section -->
+                  <div class="owl-carousel pre-slider">
+                    <div class="pre-item" *ngFor="let image of pg.images;let last=last">
+                      <img [src]="imageURL+image.fileid"
+                           alt="{{image.description}}">
+                    </div>
+                  </div>
+                  <!-- house image section -->
+                </div>
+
+                <div class="blog-preview">
+                  <div class="content-group-sm media blog-title stack-media-on-mobile text-left">
+                    <div class="media-body">
+                      <h5 class="text-bold no-margin"><a href="#" class="text-default"></a></h5>
+                      <div class="row mspace">
+                        <div class="col-md-6" *ngIf="room.single">
+                          <div class="row mspace">
+                            <p class="sharingtype">
+                             <span>
+                            Sharing Type
+                          </span> <br/>
+                             <span *ngIf="room.single"> <i
+                               class="icon-checkmark3 text-blue position-left"></i>Single &nbsp;</span>
+                            </p>
+                          </div>
+                          <div class="row mspace">
+                            <p class="house-locality availability">
+                              <!--<span class="ng-hide">Not Available</span>-->
+                          <span>
+                            <i class="fa fa-bed"></i> {{room.sAvailableVacancies}} bed(s) available
+                          </span>
+                              <span>for boys</span>
+                            </p>
+                          </div>
+                          <div class="row mspace">
+                            <div class="col-md-6">
+                              <div class="house-rent">
+                                <p>City</p>
+                                <div class="house-rent-value ng-binding">
+                                  <b>{{pg.locality}}</b>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="house-rent">
+                                <p> Security deposit </p>
+                                <div class="house-rent-value ng-binding">
+                                  ₹ {{room.sExpectedDeposit}}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row mspace">
+                            <div class="col-md-6">
+                              <div class="house-rent">
+                                <p> Rent With Food</p>
+                                <div class="house-rent-value ng-binding">
+                                  ₹ {{room.sExpectedRentWithFood}}<span
+                                  class="small-font ng-binding"> / bed</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="house-rent">
+                                <p> Rent Without Food</p>
+                                <div class="house-rent-value ng-binding">
+                                  ₹ {{room.sExpectedRentWithoutFood}}<span
+                                  class="small-font ng-binding"> / bed</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6" *ngIf="room.double">
+                          <div class="row mspace">
+                            <p class="sharingtype">
+                             <span>
+                            Sharing Type
+                          </span> <br/>
+                             <span *ngIf="room.double"> <i
+                               class="icon-checkmark3 text-blue position-left"></i>Double &nbsp;</span>
+                            </p>
+                          </div>
+                          <div class="row mspace">
+                            <p class="house-locality availability">
+                              <!--<span class="ng-hide">Not Available</span>-->
+                          <span>
+                            <i class="fa fa-bed"></i> {{room.sAvailableVacancies}} bed(s) available
+                          </span>
+                              <span>for boys</span>
+                            </p>
+                          </div>
+                          <div class="row mspace">
+                            <div class="col-md-6">
+                              <div class="house-rent">
+                                <p>City</p>
+                                <div class="house-rent-value ng-binding">
+                                  <b>{{pg.locality}}</b>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="house-rent">
+                                <p> Security deposit </p>
+                                <div class="house-rent-value ng-binding">
+                                  ₹ {{room.sExpectedDeposit}}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row mspace">
+                            <div class="col-md-6">
+                              <div class="house-rent">
+                                <p> Rent With Food</p>
+                                <div class="house-rent-value ng-binding">
+                                  ₹ {{room.sExpectedRentWithFood}}<span
+                                  class="small-font ng-binding"> / bed</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="house-rent">
+                                <p> Rent Without Food</p>
+                                <div class="house-rent-value ng-binding">
+                                  ₹ {{room.sExpectedRentWithoutFood}}<span
+                                  class="small-font ng-binding"> / bed</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <br/>
+                      <br/>
+                      <div class="row mspace">
+                        <div class="col-md-6" *ngIf="room.tripple">
+                          <div class="row mspace">
+                            <p class="sharingtype">
+                             <span>
+                            Sharing Type
+                          </span> <br/>
+                             <span *ngIf="room.tripple"> <i
+                               class="icon-checkmark3 text-blue position-left"></i>Tripple &nbsp;</span>
+                            </p>
+                          </div>
+                          <div class="row mspace">
+                            <p class="house-locality availability">
+                              <!--<span class="ng-hide">Not Available</span>-->
+                          <span>
+                            <i class="fa fa-bed"></i> {{room.tAvailableVacancies}} bed(s) available
+                          </span>
+                            </p>
+                          </div>
+                          <div class="row mspace">
+                            <div class="col-md-6">
+                              <div class="house-rent">
+                                <p>City</p>
+                                <div class="house-rent-value ng-binding">
+                                  <b>{{pg.locality}}</b>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="house-rent">
+                                <p> Security deposit </p>
+                                <div class="house-rent-value ng-binding">
+                                  ₹ {{room.tExpectedDeposit}}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row mspace">
+                            <div class="col-md-6">
+                              <div class="house-rent">
+                                <p> Rent With Food</p>
+                                <div class="house-rent-value ng-binding">
+                                  ₹ {{room.tExpectedRentWithFood}}<span
+                                  class="small-font ng-binding"> / bed</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="house-rent">
+                                <p> Rent Without Food</p>
+                                <div class="house-rent-value ng-binding">
+                                  ₹ {{room.tExpectedRentWithoutFood}}<span
+                                  class="small-font ng-binding"> / bed</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6" *ngIf="room.four">
+                          <div class="row mspace">
+                            <p class="sharingtype">
+                             <span>
+                            Sharing Type
+                          </span> <br/>
+                             <span *ngIf="room.four"> <i
+                               class="icon-checkmark3 text-blue position-left"></i>Four &nbsp;</span>
+                            </p>
+                          </div>
+                          <div class="row mspace">
+                            <p class="house-locality availability">
+                              <!--<span class="ng-hide">Not Available</span>-->
+                          <span>
+                            <i class="fa fa-bed"></i> {{room.fAvailableVacancies}} bed(s) available
+                          </span>
+                            </p>
+                          </div>
+                          <div class="row mspace">
+                            <div class="col-md-6">
+                              <div class="house-rent">
+                                <p>City</p>
+                                <div class="house-rent-value ng-binding">
+                                  <b>{{pg.locality}}</b>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="house-rent">
+                                <p> Security deposit </p>
+                                <div class="house-rent-value ng-binding">
+                                  ₹ {{room.fExpectedDeposit}}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row mspace">
+                            <div class="col-md-6">
+                              <div class="house-rent">
+                                <p> Rent With Food</p>
+                                <div class="house-rent-value ng-binding">
+                                  ₹ {{room.fExpectedRentWithFood}}<span
+                                  class="small-font ng-binding"> / bed</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="house-rent">
+                                <p> Rent Without Food</p>
+                                <div class="house-rent-value ng-binding">
+                                  ₹ {{room.fExpectedRentWithoutFood}}<span
+                                  class="small-font ng-binding"> / bed</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-footer panel-footer-transparent"><a class="heading-elements-toggle"><i
+                class="icon-more"></i></a>
+                <div class="heading-elements">
+                  <ul class="list-inline list-inline-separate heading-text text-muted" hidden>
+                    <li><a class="text-default"><i class="icon-eye4 position-left"></i> 438</a></li>
+                    <li><a class="text-muted" (click)="mComments(pg,i)"><b><i
+                      class="icon-comments position-left"></i> </b> &nbsp; {{pg?.comments?.length}} Comments
+                    </a>
+                    </li>
+                    <li><a class="text-primary"><i class="icon-thumbs-up2 position-left"></i></a>
+                      320
+                    </li>
+                    <li><a class="text-muted"><i class="icon-thumbs-down2 position-left"></i></a> 14
+                    </li>
+                  </ul>
+
+                  <a routerLink="/search/room/details/{{pg._id}}/{{room.roomid}}"
+                     class="heading-text pull-right">See Details <i
+                    class="icon-arrow-right14 position-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Footer -->
+  <app-footer></app-footer>
+  <!-- /footer -->
+</div>
+

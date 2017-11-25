@@ -1,0 +1,22 @@
+.ui.segment,.box-header.with-border,.tenantbox{
+  border:0px;
+  border-radius:0px;
+  box-shadow:none;
+}
+.imgIcon{
+  margin-top: -10px;
+}
+
+.roomIcon{
+  height: 50px;
+  width: 50px;
+  display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.ui.buttons{
+  float: right;
+}
+.save{
+  display: none;
+}

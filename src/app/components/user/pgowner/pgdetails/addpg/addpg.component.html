@@ -1,0 +1,412 @@
+<div class="page-header page-header-default">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - Add PG</h4>
+      <a class="heading-elements-toggle"><i class="icon-more"></i></a></div>
+    <div class="heading-elements">
+      <div class="heading-btn-group">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="breadcrumb-line"><a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+    <ul class="breadcrumb">
+      <li><a routerLink="/home"><i class="icon-home2 position-left"></i> Home</a></li>
+      <li><a routerLink="/user/viewpgs"><i class="icon-home2 position-left"></i> View PGs</a></li>
+      <li class="active">Add PG</li>
+    </ul>
+
+    <app-settings></app-settings>
+    <ul class="breadcrumb-elements">
+      <li>
+        <button class="ui instagram button" (click)="submit()">
+          Save
+          <i class="icon-database-insert position-right"></i>
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="content">
+  <div class="cbody">
+    <div class="tabbable">
+
+      <div class="panel panel-flat animated fadeInRight">
+        <form class="modal-body ui form">
+
+          <button class="ui instagram button save" type="submit" (click)="type='save'">
+            Save
+            <i class="icon-database-insert position-right"></i>
+          </button>
+          <div class="panel-body">
+            <div class="ui raised segment">
+              <div class="ui raised segment">
+                <a class="ui blue ribbon label">Locality Details</a>
+                <h4 class="ui dividing header">Provide PG location details</h4>
+
+                <div class="ui segment">
+                  <div class="ui two column grid">
+                    <div class="eight wide column">
+                      <div class="ui form">
+                        <div class="two fields">
+                          <div class="field">
+                            <label>PG Name</label>
+                            <input type="text" placeholder="PG Display Name" name="pgname" id="pgname"
+                                   [(ngModel)]="pgdetails.pgname">
+                          </div>
+                        </div>
+                        <div class="two fields">
+                          <div class="field">
+                            <label>Street/Area</label>
+                            <input type="text" placeholder="Street/Area" name="street"
+                                   [(ngModel)]="pgdetails.street">
+                          </div>
+                          <div class="field">
+                            <label>Apartment Name</label>
+                            <input type="text" placeholder="Apartment Name" name="apartmentName"
+                                   [(ngModel)]="pgdetails.apartmentName">
+                          </div>
+                        </div>
+                        <div class="two fields">
+                          <div class="field">
+                            <label>Country</label>
+                            <input type="text" placeholder="country" class="country" name="country" id="country"
+                                   [(ngModel)]="pgdetails.country">
+                          </div>
+                          <div class="field">
+                            <label>State</label>
+                            <input type="text" placeholder="state" class="state" name="state" id="state"
+                                   [(ngModel)]="pgdetails.state">
+                          </div>
+                        </div>
+
+                        <div class="two fields">
+                          <div class="field">
+                            <label>City</label>
+                            <input type="text" placeholder="City" class="city" name="city" id="city"
+                                   [(ngModel)]="pgdetails.city">
+                          </div>
+                          <div class="field">
+                            <label>Locality</label>
+                            <input type="text" placeholder="Locality" class="locality" name="locality"
+                                   id="locality"
+                                   [(ngModel)]="pgdetails.locality">
+                          </div>
+                        </div>
+                        <div class="two fields">
+                          <div class="field">
+                            <label>Land Mark</label>
+                            <input type="text" placeholder="Land Mark" name="landmark"
+                                   [(ngModel)]="pgdetails.landmark">
+                          </div>
+                          <div class="field">
+                            <label>Pin Code</label>
+                            <input type="number" placeholder="Pin Code" name="pincode"
+                                   [(ngModel)]="pgdetails.pincode">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="eight wide column">
+                      <div class="field">
+                        <div class="ui search">
+                          <div class="ui left icon input">
+                            <input class="prompt" type="text" id="pac-input" placeholder="Enter your address">
+                            <i class="marker icon"></i>
+                          </div>
+                          <div id="map"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ui raised segment">
+                <a class="ui blue ribbon label">PG Details</a>
+                <h4 class="ui dividing header">Provide details about your place</h4>
+                <div class="ui segment">
+                  <div class="ui grid stackable grid">
+                    <div class="six wide column">
+                      <div class="ui form">
+                        <div class="grouped fields">
+                          <label>Room is available for?</label>
+                          <div class="inline fields">
+                            <div class="field">
+                              <div class="ui radio checkbox">
+                                <input type="radio" name="roomAvailableFor" value="Male"
+                                       [(ngModel)]="pgdetails.roomAvailableFor"
+                                       (change)="pgdetails.roomAvailableFor">
+                                <label>Male</label>
+                              </div>
+                            </div>
+                            <div class="field">
+                              <div class="ui radio checkbox">
+                                <input type="radio" name="roomAvailableFor" value="Female"
+                                       [(ngModel)]="pgdetails.roomAvailableFor"
+                                       (change)="pgdetails.roomAvailableFor">
+                                <label>Female</label>
+                              </div>
+                            </div>
+                            <div class="field">
+                              <div class="ui radio checkbox">
+                                <input type="radio" name="roomAvailableFor" value="Both"
+                                       [(ngModel)]="pgdetails.roomAvailableFor"
+                                       (change)="pgdetails.roomAvailableFor">
+                                <label>Both</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="grouped fields">
+                          <label>Preferred Guests?</label>
+                          <div class="inline fields">
+                            <div class="field">
+                              <div class="ui radio checkbox">
+                                <input type="radio" name="preferredGuests" value="Working Professional"
+                                       [(ngModel)]="pgdetails.preferredGuests"
+                                       (change)="pgdetails.preferredGuests">
+                                <label>
+                                  Working Professional</label>
+                              </div>
+                            </div>
+                            <div class="field">
+                              <div class="ui radio checkbox">
+                                <input type="radio" name="preferredGuests" value="Students"
+                                       [(ngModel)]="pgdetails.preferredGuests"
+                                       (change)="pgdetails.preferredGuests">
+                                <label>Students</label>
+                              </div>
+                            </div>
+                            <div class="field">
+                              <div class="ui radio checkbox">
+                                <input type="radio" name="preferredGuests" value="Both"
+                                       [(ngModel)]="pgdetails.preferredGuests"
+                                       (change)="pgdetails.preferredGuests">
+                                <label>Both</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="grouped fields">
+                          <label>Food Included</label>
+                          <div class="inline fields">
+                            <div class="field">
+                              <div class="ui radio checkbox">
+                                <input type="radio" name="foodIncluded" value="Yes"
+                                       [(ngModel)]="pgdetails.foodIncluded"
+                                       (change)="pgdetails.foodIncluded">
+                                <label>Yes</label>
+                              </div>
+                            </div>
+                            <div class="field">
+                              <div class="ui radio checkbox">
+                                <input type="radio" name="foodIncluded" value="No"
+                                       [(ngModel)]="pgdetails.foodIncluded"
+                                       (change)="pgdetails.foodIncluded">
+                                <label>No</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="six wide column">
+                      <br/>
+                      <div class="ui form">
+                        <div class="field">
+                          <label>Description</label>
+                  <textarea
+                    placeholder="Write few lines about your property like amenities, near by facilities, friendly neighbourhood & proximity to railways & bus stops"
+                    name="description" [(ngModel)]="pgdetails.description"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="four wide column">
+                      <div class="ui form">
+                        <h4 class="ui header">PG/Hostel Rules</h4>
+                        <div class="grouped fields">
+                          <div class="inline fields">
+                            <div class="field">
+                              <div class="ui checkbox">
+                                <input type="checkbox" name="pRNoSmoke" [(ngModel)]="pgdetails.pRNoSmoke"
+                                       [checked]="pgdetails.pRNoSmoke">
+                                <label>
+                                  <img class="imgIcon" src="../../../../../assets/icons/smoking.png"> No Smoking
+
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="grouped fields">
+                          <div class="inline fields">
+                            <div class="field">
+                              <div class="ui checkbox">
+                                <input type="checkbox" name="pRNoDrinking" [(ngModel)]="pgdetails.pRNoDrinking"
+                                       [checked]="pgdetails.pRNoDrinking">
+                                <label>
+                                  <img class="imgIcon" src="../../../../../assets/icons/drinking.png"> No Drinking
+
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="grouped fields">
+                          <div class="inline fields">
+                            <div class="field">
+                              <div class="ui checkbox">
+                                <input type="checkbox" name="pRNoGuardiansStay"
+                                       [(ngModel)]="pgdetails.pRNoGuardiansStay"
+                                       [checked]="pgdetails.pRNoGuardiansStay">
+                                <label>
+                                  <img class="imgIcon" src="../../../../../assets/icons/guardian.png"> No
+                                  Guardians Stay
+
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="grouped fields">
+                          <div class="inline fields">
+                            <div class="field">
+                              <div class="ui checkbox">
+                                <input type="checkbox" name="pRNoGirlsEntry"
+                                       [(ngModel)]="pgdetails.pRNoGirlsEntry"
+                                       [checked]="pgdetails.pRNoGirlsEntry">
+                                <label>
+                                  <img class="imgIcon" src="../../../../../assets/icons/ge.png"> No Girl's Entry
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="grouped fields">
+                          <div class="inline fields">
+                            <div class="field">
+                              <div class="ui checkbox">
+                                <input type="checkbox" name="pRNoGentsEntry"
+                                       [(ngModel)]="pgdetails.pRNoGentsEntry"
+                                       [checked]="pgdetails.pRNoGentsEntry">
+                                <label>
+                                  <img class="imgIcon" src="../../../../../assets/icons/guardian.png"> No Gent's
+                                  Entry
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="grouped fields">
+                          <div class="inline fields">
+                            <div class="field">
+                              <div class="ui checkbox">
+                                <input type="checkbox" name="pRNoNonVeg" [(ngModel)]="pgdetails.pRNoNonVeg"
+                                       [checked]="pgdetails.pRNoNonVeg">
+                                <label>
+                                  <img class="imgIcon" src="../../../../../assets/icons/nonveg.png"> No Non-veg
+
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ui raised segment">
+                <a class="ui blue ribbon label">Available Rooms</a>
+                <button class="ui instagram right labeled icon button right floated" type="submit"
+                        (click)="type='addrooms'">
+                  <i class="right arrow icon"></i>
+                  Add Rooms
+                </button>
+                <br/>
+                <br/>
+                <table class="table datatable-rooms">
+                  <thead>
+                  <tr>
+                    <th>Room Type</th>
+                    <th>Single</th>
+                    <th>Double</th>
+                    <th>Triple</th>
+                    <th>Four</th>
+                    <th class="text-center">Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let room of pgdetails.rooms;let last=last ">
+                    <td>
+                      <a (click)="showRooms(room.roomid)">{{room.roomType}}</a>
+                    </td>
+                    <td>
+                      <a class="text-default display-inline-block" *ngIf="room.single">
+                        <span class="text-semibold">Available Rooms - {{room.sAvailableRooms}} </span>
+                        <span class="display-block text-muted"> Vacancies - {{room.sAvailableVacancies}}</span>
+                      </a>
+                      <a class="text-default display-inline-block" *ngIf="!room.single">
+                        <span class="text-bold">N/A</span>
+                      </a>
+                    </td>
+                    <td>
+                      <a class="text-default display-inline-block" *ngIf="room.double">
+                        <span class="text-semibold">Available Rooms - {{room.dAvailableRooms}} </span>
+                        <span class="display-block text-muted"> Vacancies - {{room.dAvailableVacancies}}</span>
+                      </a>
+                      <a class="text-default display-inline-block" *ngIf="!room.double">
+                        <span class="text-bold">N/A</span>
+                      </a>
+                    </td>
+                    <td>
+                      <a class="text-default display-inline-block" *ngIf="room.triple">
+                        <span class="text-semibold">Available Rooms - {{room.tAvailableRooms}} </span>
+                        <span class="display-block text-muted"> Vacancies - {{room.tAvailableVacancies}}</span>
+                      </a>
+                      <a class="text-default display-inline-block" *ngIf="!room.triple">
+                        <span class="text-bold">N/A</span>
+                      </a>
+                    </td>
+                    <td>
+                      <a class="text-default display-inline-block" *ngIf="room.four">
+                        <span class="text-semibold">Available Rooms - {{room.fAvailableRooms}} </span>
+                        <span class="display-block text-muted"> Vacancies - {{room.fAvailableVacancies}}</span>
+                      </a>
+                      <a class="text-default display-inline-block" *ngIf="!room.four">
+                        <span class="text-bold">N/A</span>
+                      </a>
+                    </td>
+                    <td class="text-center">
+                      <ul class="icons-list">
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="icon-menu9"></i>
+                          </a>
+
+                          <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a (click)="showRooms(room.roomid)"><i class="icon-history"></i>View Details View
+                              Details</a>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+  <!-- Footer -->
+  <app-footer></app-footer>
+  <!-- /footer -->
+</div>
+

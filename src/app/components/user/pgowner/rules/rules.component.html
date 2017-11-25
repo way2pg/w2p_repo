@@ -1,0 +1,90 @@
+<div class="page-header page-header-default">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - Add Rules</h4>
+      <a class="heading-elements-toggle"><i class="icon-more"></i></a></div>
+  </div>
+
+  <div class="breadcrumb-line"><a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+    <ul class="breadcrumb">
+      <li><a routerLink="/home"><i class="icon-home2 position-left"></i> Home</a></li>
+      <li class="active">Add Rules</li>
+    </ul>
+
+    <app-settings></app-settings>
+  </div>
+</div>
+<div class="content">
+  <div class="cbody tabbable">
+
+    <div class="panel panel-flat">
+      <div class="panel-heading">
+        <a class="ui blue ribbon label">Rules</a>
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <input type="text" class="form-control" name="rule" id="rule" placeholder="Rules" [(ngModel)]="rule.rule">
+            </div>
+            <div class="text-right">
+              <button type="submit" class="btn btn-primary" (click)="upsert()">Add Rules <i
+                class="icon-arrow-right14 position-right"></i>
+              </button>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <table class="table datatable-basic" *ngIf="!isDataAvailable">
+              <thead>
+              <tr>
+                <th class="text-bold">Rules</th>
+                <th class="text-bold text-center" width="5%">Actions</th>
+              </tr>
+              </thead>
+              <tbody>
+
+              <tr *ngFor="let rule of rules;let last=last " id="{{rule._id}}">
+                <td class="ui-fancytree fancytree-container fancytree-plain">
+                  <li class="">
+                    <span class="fancytree-node has-tooltip fancytree-exp-n fancytree-ico-c">
+                    <span
+                      class="fancytree-expander"></span>
+                    <span class="fancytree-icon"></span>
+                    <span class="fancytree-title">{{rule.rule}}</span></span>
+                  </li>
+                </td>
+                <td class="text-center">
+                  <ul class="icons-list">
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="icon-menu9"></i>
+                      </a>
+
+                      <ul class="dropdown-menu dropdown-menu-right">
+                        <li>
+                          <a (click)="update(rule)"><i class="icon-pencil5"></i>Edit</a>
+                        </li>
+                        <li>
+                          <a (click)="delete(rule)"><i class="glyphicon glyphicon-remove"></i>Remove</a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+
+              </tbody>
+            </table>
+            <h5 class="table-empty" *ngIf="isDataAvailable">No rules are available.</h5>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- Footer -->
+  <app-footer></app-footer>
+  <!-- /footer -->
+</div>

@@ -1,0 +1,68 @@
+<div class="login-container login-cover">
+  <!-- Page container -->
+  <div class="page-container">
+    <!-- Page content -->
+    <div class="page-content">
+      <!-- Main content -->
+      <div class="content-wrapper">
+       <div class="content">
+         <div class="panel login-form">
+           <!-- Form -->
+           <form class="modal-body ui form">
+             <div class="text-center">
+               <div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
+               <h5 class="content-group">Login to your account</h5>
+             </div>
+             <div class="field">
+               <div class="ui left icon input">
+                 <input type="text" name="email" placeholder="Email ID" [(ngModel)]="model.email">
+                 <i class="user icon"></i>
+               </div>
+             </div>
+             <div class="field">
+               <div class="ui left icon input">
+                 <input type="password" name="password" placeholder="Password" [(ngModel)]="model.password">
+                 <i class="lock icon"></i>
+               </div>
+             </div>
+             <div class="ui grid">
+               <div class="eight wide column">
+                 <div class="field">
+                   <div class="ui checkbox">
+                     <input type="checkbox" tabindex="0" class="hidden">
+                     <label>Remember me</label>
+                   </div>
+                 </div>
+               </div>
+               <div class="eight wide column text-right">
+                 <a [routerLink]="['/auth/reset']">Forgot password?</a>
+               </div>
+             </div>
+             <button class="fluid ui blue submit button" type="submit">Login
+               <i class="icon-arrow-right14 position-right"></i>
+             </button>
+             <br/>
+             <!--<div class="content-divider text-muted form-group"><span>or Login with</span></div>
+             <ul class="list-inline form-group list-inline-condensed text-center">
+               <li><a href="#" class="btn border-indigo text-indigo btn-flat btn-icon btn-rounded"><i class="icon-facebook"></i></a></li>
+               <li><a href="#" class="btn border-pink-300 text-pink-300 btn-flat btn-icon btn-rounded"><i class="icon-dribbble3"></i></a></li>
+               <li><a href="#" class="btn border-slate-600 text-slate-600 btn-flat btn-icon btn-rounded"><i class="icon-github"></i></a></li>
+               <li><a href="#" class="btn border-info text-info btn-flat btn-icon btn-rounded"><i class="icon-twitter"></i></a></li>
+             </ul>-->
+             <div class="content-divider text-muted form-group"><span>Don't have an account?</span></div>
+             <a [routerLink]="['/auth/register']" routerLinkActive="active"
+                class="btn btn-default btn-block content-group">Sign up</a>
+            <span class="help-block text-center no-margin">By continuing, you're confirming that you've read our <a
+              href="#">Terms &amp; Conditions</a> and <a href="#">Cookie Policy</a></span>
+           </form>
+           <!-- /form -->
+         </div>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<app-footer></app-footer>
+<!-- /footer -->

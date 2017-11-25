@@ -1,0 +1,107 @@
+<div class="page-header page-header-default">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - Tenant Package</h4>
+      <a class="heading-elements-toggle"><i class="icon-more"></i></a></div>
+    <div class="heading-elements">
+      <div class="heading-btn-group" >
+
+      </div>
+    </div>
+  </div>
+
+  <div class="breadcrumb-line"><a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+    <ul class="breadcrumb">
+      <li><a [routerLink]="['/']"><i class="icon-home2 position-left"></i> Home</a></li>
+      <li class="active">Tenant Package</li>
+    </ul>
+
+    <app-settings></app-settings>
+
+  </div>
+</div>
+<div class="content">
+  <div class="tabbable">
+
+    <div class="panel panel-flat">
+
+      <div class="panel-heading">
+        <a class="ui blue ribbon label">My Package Details</a>
+      </div>
+
+      <div class="panel-body">
+
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="text-bold">Date Of Join</label><br/>
+              <label> {{tenantModel.joinedDate | date: 'dd-MM-yyyy'}}</label>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="text-bold">PG Name</label><br/>
+              <label>{{tenantModel.pgdetails?.pgname}}</label>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="text-bold">Package Type</label><br/>
+              <label>{{tenantModel.joinedPackage}}</label>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="text-bold">Room Type</label><br/>
+              <label>{{tenantModel.roomtype}}</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="text-bold">Deposit Amount</label><br/>
+              <label>{{tenantModel.advanceAmount}}</label>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="text-bold">Paid Amount</label><br/>
+              <label>{{tenantModel.advanceAmount}}</label>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="text-bold">Validity</label><br/>
+              <label></label>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="panel-heading">
+        <a class="ui blue ribbon label">Available Aminities</a>
+      </div>
+
+
+    </div>
+
+    <div class="panel panel-flat border-top-warning">
+      <div class="panel-heading">
+        <!-- <h6 class="panel-title"><span class="text-semibold">
+           <span>Ads by </span> </span> OursPG</h6>-->
+      </div>
+
+      <div class="panel-body">
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <app-footer></app-footer>
+  <!-- /footer -->
+</div>
+

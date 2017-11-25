@@ -1,0 +1,314 @@
+<div class="page-header page-header-default">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - Food Management</h4>
+      <a class="heading-elements-toggle"><i class="icon-more"></i></a></div>
+  </div>
+
+  <div class="breadcrumb-line"><a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+    <ul class="breadcrumb">
+      <li><a routerLink="/home"><i class="icon-home2 position-left"></i> Home</a></li>
+      <li><a routerLink="/user/food/list">Food Management</a></li>
+      <li class="active">Food Menu</li>
+    </ul>
+
+    <app-settings></app-settings>
+    <ul class="breadcrumb-elements">
+      <li>
+        <a (click)="saveFoodMenu()">
+          <i class="icon-menu6 position-left"></i>
+          <b>Save</b>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="content">
+  <div class="cbody tabbable">
+
+    <div class="panel panel-flat">
+      <div class="panel-body">
+        <form role="form" class="ui form" #foodMenuForm="ngForm" novalidate>
+          <div class="tiva-timetable" data-source="json" data-view="week">
+            <button type="button" class="btn btn-link daterange-ranges heading-btn text-semibold">
+              <i class="icon-calendar3 position-left"></i> <span></span> <b class="caret"></b>
+            </button>
+          </div>
+          <br/>
+          <br/>
+          <table class="ui definition table table-bordered">
+            <thead>
+            <tr>
+              <th></th>
+              <th>Breakfast</th>
+              <th>Lunch</th>
+              <th>Dinner</th>
+              <th>Special</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td class="timetable-column-header">
+                <div class="media-left">
+                  <h5 class="text-semibold no-margin">{{foodModel.foodMenu.dayOneName}}
+                  </h5>
+                  <span class="text-muted">{{foodModel.foodMenu.dayOneDate}}</span>
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input id="dayOneBreakfast" type="text" class="validate" name="dayOneBreakfast"
+                         placeholder="{{foodModel.foodMenu.dayOneName}} Breakfast"
+                         [(ngModel)]="foodModel.foodMenu.dayOneBreakfast">
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="dayOneLunch" placeholder="{{foodModel.foodMenu.dayOneName}} Lunch"
+                         [(ngModel)]="foodModel.foodMenu.dayOneLunch">
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="dayOneDinner" placeholder="{{foodModel.foodMenu.dayOneName}} Dinner"
+                         [(ngModel)]="foodModel.foodMenu.dayOneDinner">
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="monTodaySpecial"
+                         placeholder="{{foodModel.foodMenu.dayOneName}} Special"
+                         [(ngModel)]="foodModel.foodMenu.dayOneSpecial">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="timetable-column-header">
+                <div class="media-left">
+                  <h5 class="text-semibold no-margin">{{foodModel.foodMenu.dayTwoName}}
+                  </h5>
+                  <span class="text-muted"> {{foodModel.foodMenu.dayTwoDate}}</span>
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="dayTwoBreakfast"
+                         placeholder="{{foodModel.foodMenu.dayTwoName}} Breakfast"
+                         [(ngModel)]="foodModel.foodMenu.dayTwoBreakfast">
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="dayTwoLunch" placeholder="{{foodModel.foodMenu.dayTwoName}} Lunch"
+                         [(ngModel)]="foodModel.foodMenu.dayTwoLunch">
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="dayTwoDinner" placeholder="{{foodModel.foodMenu.dayTwoName}} Dinner"
+                         [(ngModel)]="foodModel.foodMenu.dayTwoDinner">
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="dayTwoSpecial"
+                         placeholder="{{foodModel.foodMenu.dayTwoName}} Special"
+                         [(ngModel)]="foodModel.foodMenu.dayTwoSpecial">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="timetable-column-header">
+                <div class="media-left">
+                  <h5 class="text-semibold no-margin">{{foodModel.foodMenu.dayThreeName}}
+                  </h5>
+                  <span class="text-muted"> {{foodModel.foodMenu.dayThreeDate}}</span>
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="dayThreeBreakfast"
+                         placeholder="{{foodModel.foodMenu.dayThreeName}} Breakfast"
+                         [(ngModel)]="foodModel.foodMenu.dayThreeBreakfast">
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="dayThreeLunch"
+                         placeholder="{{foodModel.foodMenu.dayThreeName}} Lunch"
+                         [(ngModel)]="foodModel.foodMenu.dayThreeLunch">
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="dayThreeDinner"
+                         placeholder="{{foodModel.foodMenu.dayThreeName}} Dinner"
+                         [(ngModel)]="foodModel.foodMenu.dayThreeDinner">
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="dayThreeSpecial"
+                         placeholder="{{foodModel.foodMenu.dayThreeName}} Special"
+                         [(ngModel)]="foodModel.foodMenu.dayThreeSpecial">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="timetable-column-header">
+                <div class="media-left">
+                  <h5 class="text-semibold no-margin">{{foodModel.foodMenu.dayFourName}}
+                  </h5>
+                  <span class="text-muted"> {{foodModel.foodMenu.dayFourDate}}</span>
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="dayFourBreakfast"
+                         placeholder="{{foodModel.foodMenu.dayFourName}} Breakfast"
+                         [(ngModel)]="foodModel.foodMenu.dayFourBreakfast">
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="dayFourLunch" placeholder="{{foodModel.foodMenu.dayFourName}} Lunch"
+                         [(ngModel)]="foodModel.foodMenu.dayFourLunch">
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="dayFourDinner"
+                         placeholder="{{foodModel.foodMenu.dayFourName}} Dinner"
+                         [(ngModel)]="foodModel.foodMenu.dayFourDinner">
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="dayFourSpecial"
+                         placeholder="{{foodModel.foodMenu.dayFourName}} Special"
+                         [(ngModel)]="foodModel.foodMenu.dayFourSpecial">
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="timetable-column-header">
+                <div class="media-left">
+                  <h5 class="text-semibold no-margin">{{foodModel.foodMenu.dayFiveName}}
+                  </h5>
+                  <span class="text-muted"> {{foodModel.foodMenu.dayFiveDate}}</span>
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="dayFiveBreakfast"
+                         placeholder="{{foodModel.foodMenu.dayFiveName}} Breakfast"
+                         [(ngModel)]="foodModel.foodMenu.dayFiveBreakfast">
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="dayFiveLunch" placeholder="{{foodModel.foodMenu.dayFiveName}} Lunch"
+                         [(ngModel)]="foodModel.foodMenu.dayFiveLunch">
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="dayFiveDinner"
+                         placeholder="{{foodModel.foodMenu.dayFiveName}} Dinner"
+                         [(ngModel)]="foodModel.foodMenu.dayFiveDinner">
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="dayFiveSpecial"
+                         placeholder="{{foodModel.foodMenu.dayFiveName}} Special"
+                         [(ngModel)]="foodModel.foodMenu.dayFiveSpecial">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="timetable-column-header">
+                <div class="media-left">
+                  <h5 class="text-semibold no-margin">{{foodModel.foodMenu.daySixName}}
+                  </h5>
+                  <span class="text-muted"> {{foodModel.foodMenu.daySixDate}}</span>
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="daySixBreakfast"
+                         placeholder="{{foodModel.foodMenu.daySixName}} Breakfast"
+                         [(ngModel)]="foodModel.foodMenu.daySixBreakfast">
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="daySixLunch" placeholder="{{foodModel.foodMenu.daySixName}} Lunch"
+                         [(ngModel)]="foodModel.foodMenu.daySixLunch">
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="daySixDinner" placeholder="{{foodModel.foodMenu.daySixName}} Dinner"
+                         [(ngModel)]="foodModel.foodMenu.daySixDinner">
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="daySixSpecial"
+                         placeholder="{{foodModel.foodMenu.daySixName}} Special"
+                         [(ngModel)]="foodModel.foodMenu.daySixSpecial">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="timetable-column-header">
+                <div class="media-left">
+                  <h5 class="text-semibold no-margin">{{foodModel.foodMenu.daySevenName}}
+                  </h5>
+                  <span class="text-muted">{{foodModel.foodMenu.daySevenDate}}</span>
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="daySevenBreakfast"
+                         placeholder="{{foodModel.foodMenu.daySevenName}} Breakfast"
+                         [(ngModel)]="foodModel.foodMenu.daySevenBreakfast">
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="daySevenLunch"
+                         placeholder="{{foodModel.foodMenu.daySevenName}} Lunch"
+                         [(ngModel)]="foodModel.foodMenu.daySevenLunch">
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="daySevenDinner"
+                         placeholder="{{foodModel.foodMenu.daySevenName}} Dinner"
+                         [(ngModel)]="foodModel.foodMenu.daySevenDinner">
+                </div>
+              </td>
+              <td>
+                <div class="field">
+                  <input type="text" name="daySevenSpecial"
+                         placeholder="{{foodModel.foodMenu.daySevenName}} Special"
+                         [(ngModel)]="foodModel.foodMenu.daySevenSpecial">
+                </div>
+              </td>
+            </tr>
+
+            </tbody>
+          </table>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <!-- Footer -->
+  <app-footer></app-footer>
+  <!-- /footer -->
+</div>

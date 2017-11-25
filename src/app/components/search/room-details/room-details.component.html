@@ -1,0 +1,1714 @@
+<div class="page-header page-header-default">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - Search PG</h4>
+      <a class="heading-elements-toggle"><i class="icon-more"></i></a></div>
+    <div class="heading-elements">
+      <div class="heading-btn-group">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="breadcrumb-line"><a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+    <ul class="breadcrumb">
+      <li><a [routerLink]="['/home']"><i class="icon-home2 position-left"></i> Home</a></li>
+      <li><a [routerLink]="['/search']"><i class="icon-search4 position-left"></i> Search</a></li>
+      <li><a (click)="goBack()">{{pgdetails?.pgname}}</a></li>
+      <li class="active">{{pgdetails?.rooms[0]?.roomType}}</li>
+    </ul>
+
+
+    <app-settings></app-settings>
+  </div>
+</div>
+<div class="content">
+
+  <div class="row cbody">
+    <section class="grey-bg">
+      <div class="col-md-9">
+        <div class="panel panel-white">
+          <div class="panel-heading">
+            <h6 class="panel-title text-semibold">{{pgdetails?.pgname}}<a class="heading-elements-toggle"><i
+              class="icon-more"></i></a></h6>
+
+            <div class="heading-elements">
+              Room Type - <span
+              class="text-bold" style="color: #00B5AD;">{{room.roomType}}</span>
+            </div>
+          </div>
+
+          <ul class="nav nav-lg nav-tabs nav-tabs-bottom nav-tabs-toolbar no-margin">
+            <li class="active"><a href="#course-overview" data-toggle="tab"><i
+              class="icon-menu7 position-left"></i> Room Details</a></li>
+            <li><a href="#course-attendees" data-toggle="tab"><i class="icon-people position-left"></i> Tenant
+              List</a>
+            </li>
+            <li><a href="#offers" data-toggle="tab"><i class="icon-gift position-left"></i> Offers</a>
+            </li>
+            <li><a href="#comments" data-toggle="tab"><b><i
+              class="icon-comments position-left"></i> </b> Comments</a>
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <div class="tab-pane fade in active" id="course-overview">
+              <div class="panel-body">
+                <div class="content-group-lg">
+
+                  <div class="col-8-12" style="position:relative;">
+                    <!-- house image section -->
+                    <div id="houseImageSection">
+
+                      <div class="short-list-icn  " style="padding-right: 10px" title="Add to Wishlist">
+                        <span id="wishlistMessage" class="hide">
+                        </span>
+                        <i id='add-remove-wishlist' class="fa fa-heart"></i>
+                      </div>
+
+                      <div class="offer-tag">
+                        <span>Offer</span>
+                      </div>
+
+                      <div id="bannerSlider" class="banner-slider-popup home-detail-banner">
+                        <div id="home-slider" class="banner-popup-container owl-carousel">
+                          <div class="slider-item" *ngFor="let image of images;let last=last"
+                               [owl]="!isDataAvailable ? (last ? true : false):false">
+                            <img [src]="imageURL+image.fileid"
+                                 alt="{{image.description}}">
+                          </div>
+                        </div>
+
+                        <div class="content">
+                          <footer>
+                            <span style="display:block;font-size:12px; font-weight:600;">From</span>
+                            <h2><i class="icon-rupee"></i>5000</h2>
+                            <span>Security Deposit - <strong>&#8377; 10000.0</strong></span>
+                          </footer>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- house image section -->
+                  </div>
+                </div>
+
+                <div class="row">
+
+                  <div class="panel-group panel-group-control panel-group-control-right content-group-lg">
+                    <div class="panel panel-white" [hidden]="single" disabled="disabled">
+                      <div class="panel-heading">
+                        <h6 class="panel-title text-bold">
+                          <a data-toggle="collapse" href="#collapsible-control-right-group1">Single Sharing</a>
+                        </h6>
+                      </div>
+                      <div id="collapsible-control-right-group1" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                          <div class="ui grid stackable grid">
+                            <div class="four wide column">
+                              <div class="ui form">
+                                <div class="disabled field">
+                                  <label>Available Rooms</label>
+                                  <input type="text" placeholder="Available Rooms" name="sAvailableRooms"
+                                         [(ngModel)]="room.sAvailableRooms">
+                                </div>
+                                <div class="disabled field">
+                                  <label>Available Vacancies</label>
+                                  <input type="text" placeholder="Available Vacancies"
+                                         name="sAvailableVacancies"
+                                         [(ngModel)]="room.sAvailableVacancies">
+                                </div>
+                                <div class="disabled field">
+                                  <label>Check In Time</label>
+                                  <input type="text" placeholder="Time" name="sCheckInTime"
+                                         [(ngModel)]="room.sCheckInTime">
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <label>Parking</label>
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="sParking" value="Bike"
+                                               [(ngModel)]="room.sParking"
+                                               [checked]="room.sParking">
+                                        <label>Bike</label>
+                                      </div>
+                                    </div>
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="sParking" value="Car"
+                                               [(ngModel)]="room.sParking"
+                                               [checked]="room.sParking">
+                                        <label>Car</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="grouped disabled fields">
+                                  <label>Laundry</label>
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="sLaundray" value="Yes"
+                                               [(ngModel)]="room.sLaundray"
+                                               [checked]="room.sLaundray">
+                                        <label>Yes</label>
+                                      </div>
+                                    </div>
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="sLaundray" value="No"
+                                               [(ngModel)]="room.sLaundray"
+                                               [checked]="room.sLaundray">
+                                        <label>No</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <label>Warden Facility</label>
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="sWardenFacility" value="Yes"
+                                               [(ngModel)]="room.sWardenFacility"
+                                               [checked]="room.sWardenFacility">
+                                        <label>Yes</label>
+                                      </div>
+                                    </div>
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="sWardenFacility" value="No"
+                                               [(ngModel)]="room.sWardenFacility"
+                                               [checked]="room.sWardenFacility">
+                                        <label>No</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="four wide column">
+                              <div class="ui form">
+                                <div class="disabled field">
+                                  <label>Expected Deposit</label>
+                                  <input type="text" placeholder="Enter Amount" name="sExpectedDeposit"
+                                         [(ngModel)]="room.sExpectedDeposit">
+                                </div>
+                                <div class="disabled field">
+                                  <label>Expected Rent(With Food)</label>
+                                  <input type="text" placeholder="Enter Amount" name="sExpectedRentWithFood"
+                                         [(ngModel)]="room.sExpectedRentWithFood">
+                                </div>
+                                <div class="disabled field">
+                                  <label>Expected Rent(Without Food)</label>
+                                  <input type="text" placeholder="Enter Amount" name="sExpectedRentWithoutFood"
+                                         [(ngModel)]="room.sExpectedRentWithoutFood">
+                                </div>
+                                <div class="disabled field">
+                                  <label>Check Out Time</label>
+                                  <input type="text" placeholder="Time" name="scheckOutTime"
+                                         [(ngModel)]="room.scheckOutTime">
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <label>Room Cleaning</label>
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="sRoomCleaning" value="Yes"
+                                               [(ngModel)]="room.sRoomCleaning">
+                                        <label>Yes</label>
+                                      </div>
+                                    </div>
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="sRoomCleaning" value="No"
+                                               [(ngModel)]="room.sRoomCleaning">
+                                        <label>No</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="four wide column">
+                              <div class="ui form">
+                                <h4 class="ui disabled header">Room Amenities</h4>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="sCupboard" [(ngModel)]="room.sCupboard"
+                                               [checked]="room.sCupboard">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/cupboard.png">
+                                          Cupboard
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="sTV" [(ngModel)]="room.sTV"
+                                               [checked]="room.sTV">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/tv.png"> TV
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="sAttachedToilet"
+                                               [(ngModel)]="room.sAttachedToilet"
+                                               [checked]="room.sAttachedToilet">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/toilet.png">
+                                          Attached Toilet
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="sCommonTV" [(ngModel)]="room.sCommonTV"
+                                               [checked]="room.sCommonTV">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/tv.png"> Common
+                                          TV
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="sMess" [(ngModel)]="room.sMess"
+                                               [checked]="room.sMess">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/mess.png"> Mess
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="sLift" [(ngModel)]="room.sLift"
+                                               [checked]="room.sLift">
+                                        <label>
+                                          <img class="imgIcon"
+                                               src="../../../../../assets/icons/elevator_dark.png"> Lift
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="four wide column">
+                              <div class="ui form">
+                                <h4 class="ui disabled header"></h4>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="sGyser" [(ngModel)]="room.sGyser"
+                                               [checked]="room.sGyser">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/gyser.png">
+                                          Gyser
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="sAC" [(ngModel)]="room.sAC"
+                                               [checked]="room.sAC">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/ac.png"> AC
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="sBedding" [(ngModel)]="room.sBedding"
+                                               [checked]="room.sBedding">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/bedding.png">
+                                          Bedding
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="sRefrigerator"
+                                               [(ngModel)]="room.sRefrigerator"
+                                               [checked]="room.sRefrigerator">
+                                        <label>
+                                          <img class="imgIcon"
+                                               src="../../../../../assets/icons/refrigerator.png"> Refrigerator
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="sWifi" [(ngModel)]="room.sWifi"
+                                               [checked]="room.sWifi">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/wifi.png"> Wifi
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="sCookingAllowed"
+                                               [(ngModel)]="room.sCookingAllowed"
+                                               [checked]="room.sCookingAllowed">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/cooking.png">
+                                          Cooking Allowed
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="sPowerBackup"
+                                               [(ngModel)]="room.sPowerBackup"
+                                               [checked]="room.sPowerBackup">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/power.png">
+                                          Power Backup
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-white" [hidden]="double" disabled="disabled">
+                      <div class="panel-heading">
+                        <h6 class="panel-title text-bold">
+                          <a class="collapsed" data-toggle="collapse" href="#collapsible-control-right-group2">Double
+                            Sharing</a>
+                        </h6>
+                      </div>
+                      <div id="collapsible-control-right-group2" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <div class="ui grid stackable grid">
+                            <div class="four wide column">
+                              <div class="ui form">
+                                <div class="disabled field">
+                                  <label>Available Rooms</label>
+                                  <input type="text" placeholder="Available Rooms" name="dAvailableRooms"
+                                         [(ngModel)]="room.dAvailableRooms">
+                                </div>
+                                <div class="disabled field">
+                                  <label>Available Vacancies</label>
+                                  <input type="text" placeholder="Available Vacancies"
+                                         name="dAvailableVacancies"
+                                         [(ngModel)]="room.dAvailableVacancies">
+                                </div>
+                                <div class="disabled field">
+                                  <label>Check In Time</label>
+                                  <input type="text" placeholder="Time" name="dCheckInTime"
+                                         [(ngModel)]="room.dCheckInTime">
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <label>Parking</label>
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="dParking" value="Bike"
+                                               [(ngModel)]="room.dParking"
+                                               [checked]="room.dParking">
+                                        <label>Bike</label>
+                                      </div>
+                                    </div>
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="dParking" value="Car"
+                                               [(ngModel)]="room.dParking"
+                                               [checked]="room.dParking">
+                                        <label>Car</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="grouped disabled fields">
+                                  <label>Laundry</label>
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="dLaundray" value="Yes"
+                                               [(ngModel)]="room.dLaundray"
+                                               [checked]="room.dLaundray">
+                                        <label>Yes</label>
+                                      </div>
+                                    </div>
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="dLaundray" value="No"
+                                               [(ngModel)]="room.dLaundray"
+                                               [checked]="room.dLaundray">
+                                        <label>No</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <label>Warden Facility</label>
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="dWardenFacility" value="Yes"
+                                               [(ngModel)]="room.dWardenFacility"
+                                               [checked]="room.dWardenFacility">
+                                        <label>Yes</label>
+                                      </div>
+                                    </div>
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="dWardenFacility" value="No"
+                                               [(ngModel)]="room.dWardenFacility"
+                                               [checked]="room.dWardenFacility">
+                                        <label>No</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="four wide column">
+                              <div class="ui form">
+                                <div class="disabled field">
+                                  <label>Expected Deposit</label>
+                                  <input type="text" placeholder="Enter Amount" name="dExpectedDeposit"
+                                         [(ngModel)]="room.dExpectedDeposit">
+                                </div>
+                                <div class="disabled field">
+                                  <label>Expected Rent(With Food)</label>
+                                  <input type="text" placeholder="Enter Amount" name="dExpectedRentWithFood"
+                                         [(ngModel)]="room.dExpectedRentWithFood">
+                                </div>
+                                <div class="disabled field">
+                                  <label>Expected Rent(Without Food)</label>
+                                  <input type="text" placeholder="Enter Amount" name="dExpectedRentWithoutFood"
+                                         [(ngModel)]="room.dExpectedRentWithoutFood">
+                                </div>
+                                <div class="disabled field">
+                                  <label>Check Out Time</label>
+                                  <input type="text" placeholder="Time" name="dcheckOutTime"
+                                         [(ngModel)]="room.dcheckOutTime">
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <label>Room Cleaning</label>
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="dRoomCleaning" value="Yes"
+                                               [(ngModel)]="room.dRoomCleaning"
+                                               [checked]="room.dRoomCleaning">
+                                        <label>Yes</label>
+                                      </div>
+                                    </div>
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="dRoomCleaning" value="No"
+                                               [(ngModel)]="room.dRoomCleaning"
+                                               [checked]="room.dRoomCleaning">
+                                        <label>No</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="four wide column">
+                              <div class="ui form">
+                                <h4 class="ui disabled header">Room Amenities</h4>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="dCupboard" [(ngModel)]="room.dCupboard"
+                                               [checked]="room.dCupboard">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/cupboard.png">
+                                          Cupboard
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="dTV" [(ngModel)]="room.dTV"
+                                               [checked]="room.dTV">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/tv.png"> TV
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="dAttachedToilet"
+                                               [(ngModel)]="room.dAttachedToilet"
+                                               [checked]="room.dAttachedToilet">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/toilet.png">
+                                          Attached Toilet
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="sCommonTV" [(ngModel)]="room.dCommonTV"
+                                               [checked]="room.dCommonTV">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/tv.png"> Common
+                                          TV
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="dMess" [(ngModel)]="room.dMess"
+                                               [checked]="room.dMess">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/mess.png"> Mess
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="dLift" [(ngModel)]="room.dLift"
+                                               [checked]="room.dLift">
+                                        <label>
+                                          <img class="imgIcon"
+                                               src="../../../../../assets/icons/elevator_dark.png"> Lift
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="four wide column">
+                              <div class="ui form">
+                                <h4 class="ui disabled header"></h4>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="dGyser" [(ngModel)]="room.dGyser"
+                                               [checked]="room.dGyser">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/gyser.png">
+                                          Gyser
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="dAC" [(ngModel)]="room.dAC"
+                                               [checked]="room.dAC">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/ac.png"> AC
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="dBedding" [(ngModel)]="room.dBedding"
+                                               [checked]="room.dBedding">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/bedding.png">
+                                          Bedding
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="dRefrigerator"
+                                               [(ngModel)]="room.dRefrigerator"
+                                               [checked]="room.dRefrigerator">
+                                        <label>
+                                          <img class="imgIcon"
+                                               src="../../../../../assets/icons/refrigerator.png"> Refrigerator
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="dWifi" [(ngModel)]="room.dWifi"
+                                               [checked]="room.dWifi">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/wifi.png"> Wifi
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="dCookingAllowed"
+                                               [(ngModel)]="room.dCookingAllowed"
+                                               [checked]="room.dCookingAllowed">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/cooking.png">
+                                          Cooking Allowed
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="dPowerBackup"
+                                               [(ngModel)]="room.dPowerBackup"
+                                               [checked]="room.dPowerBackup">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/power.png">
+                                          Power Backup
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-white" [hidden]="triple" disabled="disabled">
+                      <div class="panel-heading">
+                        <h6 class="panel-title text-bold">
+                          <a class="collapsed" data-toggle="collapse" href="#collapsible-control-right-group3">Triple
+                            Sharing</a>
+                        </h6>
+                      </div>
+                      <div id="collapsible-control-right-group3" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <div class="ui grid stackable grid">
+                            <div class="four wide column">
+                              <div class="ui form">
+                                <div class="disabled field">
+                                  <label>Available Rooms</label>
+                                  <input type="text" placeholder="Available Rooms" name="tAvailableRooms"
+                                         [(ngModel)]="room.tAvailableRooms">
+                                </div>
+                                <div class="disabled field">
+                                  <label>Available Vacancies</label>
+                                  <input type="text" placeholder="Available Vacancies"
+                                         name="tAvailableVacancies"
+                                         [(ngModel)]="room.tAvailableVacancies">
+                                </div>
+                                <div class="disabled field">
+                                  <label>Check In Time</label>
+                                  <input type="text" placeholder="Time" name="tCheckInTime"
+                                         [(ngModel)]="room.tCheckInTime">
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <label>Parking</label>
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="tParking" value="Bike"
+                                               [(ngModel)]="room.tParking"
+                                               [checked]="room.tParking">
+                                        <label>Bike</label>
+                                      </div>
+                                    </div>
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="tParking" value="Car"
+                                               [(ngModel)]="room.tParking"
+                                               [checked]="room.tParking">
+                                        <label>Car</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="grouped disabled fields">
+                                  <label>Laundry</label>
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="tLaundray" value="Yes"
+                                               [(ngModel)]="room.tLaundray"
+                                               [checked]="room.tLaundray">
+                                        <label>Yes</label>
+                                      </div>
+                                    </div>
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="tLaundray" value="No"
+                                               [(ngModel)]="room.tLaundray"
+                                               [checked]="room.tLaundray">
+                                        <label>No</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <label>Warden Facility</label>
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="tWardenFacility" value="Yes"
+                                               [(ngModel)]="room.tWardenFacility"
+                                               [checked]="room.tWardenFacility">
+                                        <label>Yes</label>
+                                      </div>
+                                    </div>
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="tWardenFacility" value="No"
+                                               [(ngModel)]="room.tWardenFacility"
+                                               [checked]="room.tWardenFacility">
+                                        <label>No</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="four wide column">
+                              <div class="ui form">
+                                <div class="disabled field">
+                                  <label>Expected Deposit</label>
+                                  <input type="text" placeholder="Enter Amount" name="tExpectedDeposit"
+                                         [(ngModel)]="room.tExpectedDeposit">
+                                </div>
+                                <div class="disabled field">
+                                  <label>Expected Rent(With Food)</label>
+                                  <input type="text" placeholder="Enter Amount" name="tExpectedRentWithFood"
+                                         [(ngModel)]="room.tExpectedRentWithFood">
+                                </div>
+                                <div class="disabled field">
+                                  <label>Expected Rent(Without Food)</label>
+                                  <input type="text" placeholder="Enter Amount" name="tExpectedRentWithoutFood"
+                                         [(ngModel)]="room.tExpectedRentWithoutFood">
+                                </div>
+                                <div class="disabled field">
+                                  <label>Check Out Time</label>
+                                  <input type="text" placeholder="Time" name="tcheckOutTime"
+                                         [(ngModel)]="room.tcheckOutTime">
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <label>Room Cleaning</label>
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="tRoomCleaning" value="Yes"
+                                               [(ngModel)]="room.tRoomCleaning"
+                                               [checked]="room.tRoomCleaning">
+                                        <label>Yes</label>
+                                      </div>
+                                    </div>
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="tRoomCleaning" value="No"
+                                               [(ngModel)]="room.tRoomCleaning"
+                                               [checked]="room.tRoomCleaning">
+                                        <label>No</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="four wide column">
+                              <div class="ui form">
+                                <h4 class="ui disabled header">Room Amenities</h4>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="tCupboard" [(ngModel)]="room.tCupboard"
+                                               [checked]="room.tCupboard">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/cupboard.png">
+                                          Cupboard
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="tTV" [(ngModel)]="room.tTV"
+                                               [checked]="room.tTV">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/tv.png"> TV
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="tAttachedToilet"
+                                               [(ngModel)]="room.tAttachedToilet"
+                                               [checked]="room.tAttachedToilet">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/toilet.png">
+                                          Attached Toilet
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="tCommonTV" [(ngModel)]="room.tCommonTV"
+                                               [checked]="room.tCommonTV">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/tv.png"> Common
+                                          TV
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="tMess" [(ngModel)]="room.tMess"
+                                               [checked]="room.tMess">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/mess.png"> Mess
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="tLift" [(ngModel)]="room.tLift"
+                                               [checked]="room.tLift">
+                                        <label>
+                                          <img class="imgIcon"
+                                               src="../../../../../assets/icons/elevator_dark.png"> Lift
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="four wide column">
+                              <div class="ui form">
+                                <h4 class="ui disabled header"></h4>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="tGyser" [(ngModel)]="room.tGyser"
+                                               [checked]="room.tGyser">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/gyser.png">
+                                          Gyser
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="tAC" [(ngModel)]="room.tAC"
+                                               [checked]="room.tAC">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/ac.png"> AC
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="tBedding" [(ngModel)]="room.tBedding"
+                                               [checked]="room.tBedding">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/bedding.png">
+                                          Bedding
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="tRefrigerator"
+                                               [(ngModel)]="room.tRefrigerator"
+                                               [checked]="room.tRefrigerator">
+                                        <label>
+                                          <img class="imgIcon"
+                                               src="../../../../../assets/icons/refrigerator.png"> Refrigerator
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="tWifi" [(ngModel)]="room.tWifi"
+                                               [checked]="room.tWifi">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/wifi.png"> Wifi
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="tCookingAllowed"
+                                               [(ngModel)]="room.tCookingAllowed"
+                                               [checked]="room.tCookingAllowed">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/cooking.png">
+                                          Cooking Allowed
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="tPowerBackup"
+                                               [(ngModel)]="room.tPowerBackup"
+                                               [checked]="room.tPowerBackup">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/power.png">
+                                          Power Backup
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-white" [hidden]="four" disabled="disabled">
+                      <div class="panel-heading">
+                        <h6 class="panel-title text-bold">
+                          <a class="collapsed" data-toggle="collapse" href="#collapsible-control-right-group4">Four
+                            Sharing</a>
+                        </h6>
+                      </div>
+                      <div id="collapsible-control-right-group4" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <div class="ui grid stackable grid">
+                            <div class="four wide column">
+                              <div class="ui form">
+                                <div class="disabled field">
+                                  <label>Available Rooms</label>
+                                  <input type="text" placeholder="Available Rooms" name="fAvailableRooms"
+                                         [(ngModel)]="room.fAvailableRooms">
+                                </div>
+                                <div class="disabled field">
+                                  <label>Available Vacancies</label>
+                                  <input type="text" placeholder="Available Vacancies"
+                                         name="fAvailableVacancies"
+                                         [(ngModel)]="room.fAvailableVacancies">
+                                </div>
+                                <div class="disabled field">
+                                  <label>Check In Time</label>
+                                  <input type="text" placeholder="Time" name="fCheckInTime"
+                                         [(ngModel)]="room.fCheckInTime">
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <label>Parking</label>
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="fParking" value="Bike"
+                                               [(ngModel)]="room.fParking"
+                                               [checked]="room.fParking">
+                                        <label>Bike</label>
+                                      </div>
+                                    </div>
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="fParking" value="Car"
+                                               [(ngModel)]="room.fParking"
+                                               [checked]="room.fParking">
+                                        <label>Car</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="grouped disabled fields">
+                                  <label>Laundry</label>
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="fLaundray" value="Yes"
+                                               [(ngModel)]="room.fLaundray"
+                                               [checked]="room.fLaundray">
+                                        <label>Yes</label>
+                                      </div>
+                                    </div>
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="fLaundray" value="No"
+                                               [(ngModel)]="room.fLaundray"
+                                               [checked]="room.fLaundray">
+                                        <label>No</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <label>Warden Facility</label>
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="fWardenFacility" value="Yes"
+                                               [(ngModel)]="room.fWardenFacility"
+                                               [checked]="room.fWardenFacility">
+                                        <label>Yes</label>
+                                      </div>
+                                    </div>
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="fWardenFacility" value="No"
+                                               [(ngModel)]="room.fWardenFacility"
+                                               [checked]="room.fWardenFacility">
+                                        <label>No</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="four wide column">
+                              <div class="ui form">
+                                <div class="disabled field">
+                                  <label>Expected Deposit</label>
+                                  <input type="text" placeholder="Enter Amount" name="fExpectedDeposit"
+                                         [(ngModel)]="room.fExpectedDeposit">
+                                </div>
+                                <div class="disabled field">
+                                  <label>Expected Rent(With Food)</label>
+                                  <input type="text" placeholder="Enter Amount" name="fExpectedRentWithFood"
+                                         [(ngModel)]="room.fExpectedRentWithFood">
+                                </div>
+                                <div class="disabled field">
+                                  <label>Expected Rent(Without Food)</label>
+                                  <input type="text" placeholder="Enter Amount" name="fExpectedRentWithoutFood"
+                                         [(ngModel)]="room.fExpectedRentWithoutFood">
+                                </div>
+                                <div class="disabled field">
+                                  <label>Check Out Time</label>
+                                  <input type="text" placeholder="Time" name="fcheckOutTime"
+                                         [(ngModel)]="room.fcheckOutTime">
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <label>Room Cleaning</label>
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="fRoomCleaning" value="Yes"
+                                               [(ngModel)]="room.fRoomCleaning"
+                                               [checked]="room.fRoomCleaning">
+                                        <label>Yes</label>
+                                      </div>
+                                    </div>
+                                    <div class="disabled field">
+                                      <div class="ui radio checkbox">
+                                        <input type="radio" name="fRoomCleaning" value="No"
+                                               [(ngModel)]="room.fRoomCleaning"
+                                               [checked]="room.fRoomCleaning">
+                                        <label>No</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="four wide column">
+                              <div class="ui form">
+                                <h4 class="ui disabled header">Room Amenities</h4>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="fCupboard" [(ngModel)]="room.fCupboard"
+                                               [checked]="room.fCupboard">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/cupboard.png">
+                                          Cupboard
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="fTV" [(ngModel)]="room.fTV"
+                                               [checked]="room.fTV">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/tv.png"> TV
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="fAttachedToilet"
+                                               [(ngModel)]="room.fAttachedToilet"
+                                               [checked]="room.fAttachedToilet">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/toilet.png">
+                                          Attached Toilet
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="fCommonTV" [(ngModel)]="room.fCommonTV"
+                                               [checked]="room.fCommonTV">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/tv.png"> Common
+                                          TV
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="fMess" [(ngModel)]="room.fMess"
+                                               [checked]="room.fMess">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/mess.png"> Mess
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="fLift" [(ngModel)]="room.fLift"
+                                               [checked]="room.fLift">
+                                        <label>
+                                          <img class="imgIcon"
+                                               src="../../../../../assets/icons/elevator_dark.png"> Lift
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="four wide column">
+                              <div class="ui form">
+                                <h4 class="ui disabled header"></h4>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="fGyser" [(ngModel)]="room.fGyser"
+                                               [checked]="room.fGyser">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/gyser.png">
+                                          Gyser
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="fAC" [(ngModel)]="room.fAC"
+                                               [checked]="room.fAC">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/ac.png"> AC
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="fBedding" [(ngModel)]="room.fBedding"
+                                               [checked]="room.fBedding">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/bedding.png">
+                                          Bedding
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="fRefrigerator"
+                                               [(ngModel)]="room.fRefrigerator"
+                                               [checked]="room.fRefrigerator">
+                                        <label>
+                                          <img class="imgIcon"
+                                               src="../../../../../assets/icons/refrigerator.png"> Refrigerator
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="fWifi" [(ngModel)]="room.fWifi"
+                                               [checked]="room.fWifi">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/wifi.png"> Wifi
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="fCookingAllowed"
+                                               [(ngModel)]="room.fCookingAllowed"
+                                               [checked]="room.fCookingAllowed">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/cooking.png">
+                                          Cooking Allowed
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="grouped disabled fields">
+                                  <div class="inline fields">
+                                    <div class="disabled field">
+                                      <div class="ui checkbox">
+                                        <input type="checkbox" name="fPowerBackup"
+                                               [(ngModel)]="room.fPowerBackup"
+                                               [checked]="room.fPowerBackup">
+                                        <label>
+                                          <img class="imgIcon" src="../../../../../assets/icons/power.png">
+                                          Power Backup
+
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="course-attendees">
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-lg-3 col-md-6" *ngFor="let tenant of tenants;let last=last ">
+                    <div class="panel panel-body">
+                      <div class="media">
+                        <div class="media-left">
+                          <a href="#">
+                            <img [src]="tenant.tenant.profileImg" class="img-circle img-lg" alt="">
+                          </a>
+                        </div>
+
+                        <div class="media-body">
+                          <h6 class="media-heading">{{tenant.tenant.firstName}}</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="offers">
+              <div class="panel-body">
+                <div class="schedule">
+                  <!-- Offer section -->
+
+
+                  <div class="grid-card-box">
+                    <div class="content">
+                      <span class="head-red">Offers</span>
+                      <div id="Offers-slider">
+                        <div class="item">
+                          <div class="show-offers-list">
+                            <strong>Last Bed</strong>
+                            <span>NESTSS2000</span>
+                            <p> Get ₹2000 off for a limited time.
+                              <a href="/welcome/all_offer_terms" target="_blank">Terms
+                                & Conditions</a></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Offer section end -->
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="comments">
+              <div class="panel-body">
+                <div class="panel-body">
+                  <ul class="media-list chat-list content-group" id="content-group">
+                    <li [ngClass]="even? 'media':'media reversed'"
+                        *ngFor="let comment of pgcomments; let even = even; let odd = odd">
+                      <div class="media-left" *ngIf="even">
+                        <a [routerLink]="['/user/profile',comment?.user?._id]">
+                          <img [src]="imageURL + comment?.user?.profileImg"
+                               class="img-circle img-md"
+                               alt="">
+                        </a>
+                      </div>
+
+                      <div class="media-body" *ngIf="even">
+                        <div class="media-heading">
+                          <a href="#" class="text-semibold">{{comment.user.firstName}}</a>
+                        </div>
+                        <div class="media-content">{{comment.comment}}
+                        </div>
+                        <span class="media-annotation display-block mt-10">{{fromNow(comment.createdAt)}}</span>
+                      </div>
+
+                      <div class="media-body" *ngIf="odd">
+                        <div class="media-heading">
+                          <a href="#" class="text-semibold">{{comment.user.firstName}}</a>
+
+                        </div>
+                        <div class="media-content">{{comment.comment}}
+                        </div>
+                        <span class="media-annotation display-block mt-10">{{fromNow(comment.createdAt)}}</span>
+                      </div>
+
+                      <div class="media-right" *ngIf="odd">
+                        <a [routerLink]="['/user/profile',comment?.user?._id]">
+                          <img [src]="imageURL + comment?.user?.profileImg"
+                               class="img-circle img-md"
+                               alt="">
+                        </a>
+                      </div>
+
+                    </li>
+                  </ul>
+
+                                      <textarea name="enter-message" class="form-control content-group" rows="3"
+                                                cols="1" placeholder="Enter your message..."
+                                                [(ngModel)]="comments.comment" *ngIf="isLoggedIn()"></textarea>
+
+                  <div class="row" *ngIf="isLoggedIn()">
+                    <div class="col-xs-6">
+
+                    </div>
+
+                    <div class="col-xs-6 text-right">
+                      <button type="button" class="btn bg-teal-400 btn-rounded"
+                              (click)="post_comment(pg,i)">
+                        <b><i class="icon-pencil7"></i></b>
+                        Post Your Comment
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-3">
+        <div class="panel panel-flat">
+          <div class="panel-heading">
+            <h6 class="panel-title">About PG Owner<a class="heading-elements-toggle"><i
+              class="icon-more"></i></a></h6>
+
+            <div class="heading-elements">
+              <ul class="icons-list icons-list-extended heading-text">
+                <li><a href="#" data-popup="tooltip" data-container="body" title=""
+                       data-original-title="Google Drive"><i class="icon-google-drive"></i></a></li>
+                <li><a href="#" data-popup="tooltip" data-container="body" title=""
+                       data-original-title="Twitter"><i
+                  class="icon-twitter"></i></a></li>
+                <li><a href="#" data-popup="tooltip" data-container="body" title=""
+                       data-original-title="Github"><i class="icon-github"></i></a></li>
+                <li><a href="#" data-popup="tooltip" data-container="body" title=""
+                       data-original-title="Linked In"><i class="icon-linkedin"></i></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="media panel-body no-margin">
+            <div class="media-left">
+              <a>
+                <img [src]="IMAGE_URL + pgdetails?.pgowner?.profileImg" style="width: 68px; height: 68px;"
+                     class="img-circle" alt="">
+              </a>
+            </div>
+
+            <div class="media-body">
+              <div class="row">
+                <h6 class="media-heading text-semibold">{{pgdetails?.pgowner?.firstName}}</h6>
+                <p>{{pgdetails?.pgowner?.comments}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <form action="#">
+          <div class="panel panel-flat">
+            <div class="panel-heading">
+              <h6 class="panel-title">
+                <a>
+                  <img src="/assets/icons/visit.png" style="padding-right: 3px;">
+                  Visit the PG
+                </a>
+              </h6>
+            </div>
+
+            <div class="panel-body">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" placeholder="Your Name" [(ngModel)]="request.name"
+                       name="name">
+              </div>
+
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="text" class="form-control" placeholder="Your Phone Number"
+                       [(ngModel)]="request.mobile" name="mobile">
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" placeholder="Your Email"
+                       [(ngModel)]="request.email" name="email">
+              </div>
+              <div class="form-group">
+                <label>Message</label>
+                          <textarea rows="5" cols="5" class="form-control" maxlength="250"
+                                    placeholder="Enter your message here" [(ngModel)]="request.comments"
+                                    name="comments"></textarea>
+              </div>
+              <button type="submit" class="btn bg-teal-400" style="float: right" (click)="send()">Submit<i
+                class="icon-arrow-right14 position-right"></i></button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+  <!-- Footer -->
+  <app-footer></app-footer>
+  <!-- /footer -->
+</div>
+
+<div class="black-popup-overlay">
+</div>
+
+<div class="banner-popup banner-popup-container">
+  <span class="close-popup2">&times;</span>
+  <div id="home-gallery-items" class="owl-carousel">
+    <div class="item slider-item" *ngFor="let image of images;let last=last"
+         [owl]="!isDataAvailable ? (last ? true : false):false">
+      <div class="col-9-12 slider-item">
+        <img [src]="imageURL+image.fileid">
+      </div>
+      <div class="col-3-12 gallery-room-details">
+        <div class="house-modal-detail">
+          <h2>Description</h2>
+          <h5>{{image.description}}</h5>
+        </div>
+        <div class="house-modal-detail-footer">
+                        <span class="modal-beds-available">1 bed
+                          available</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

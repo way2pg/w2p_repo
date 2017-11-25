@@ -1,0 +1,241 @@
+<div class="content" id="content-wrapper">
+  <div class="row" style="padding-top: 20px;" *ngIf="user?.role == 'pgowner'">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="row">
+        <div class="col-sm-12 col-md-4 col-lg-4">
+          <div class="text-center">
+            <div class="text-size-small text-muted content-group-sm"></div>
+
+            <div class="svg-center" id="delux_pie_arc_legend"></div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 col-lg-4">
+          <div class="text-center">
+            <div class="text-size-small text-muted content-group-sm"></div>
+
+            <div class="svg-center" id="luxury_pie_arc_legend"></div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 col-lg-4">
+          <div class="text-center">
+            <div class="text-size-small text-muted content-group-sm"></div>
+
+            <div class="svg-center" id="general_pie_arc_legend"></div>
+          </div>
+        </div>
+      </div>
+      <br/>
+      <br/>
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-3">
+          <table class="table group-datatable-basic">
+            <thead>
+            <tr>
+              <th>Expense Type</th>
+              <th>Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>Credit</td>
+              <td class="text-bold" style="color:#4CB6AC">
+                <i class="icon-plus3" style="font-size: 10px"></i> {{credit_amount | currency:
+                'INR': true}}
+              </td>
+            </tr>
+            <tr>
+              <td>Debit</td>
+              <td class="text-bold" style="color:red"><i class="icon-minus3" style="font-size: 10px"
+                                                         *ngIf="debit_amount != 0"></i>
+                {{debit_amount | currency: 'INR': true}}
+              </td>
+            </tr>
+            <tr *ngIf="(credit_amount - debit_amount) > 0">
+              <td>Total Amount</td>
+              <td><span class="text-right text-bold"> {{(credit_amount - debit_amount) |
+                    currency: 'INR': true }}</span>
+              </td>
+            </tr>
+            <tr *ngIf="(credit_amount - debit_amount) < 0">
+              <td>Total Amount</td>
+              <td><span class="text-right text-bold"> {{(credit_amount - debit_amount) |
+                    currency: 'INR': true }}</span>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-9">
+          <table class="table group-datatable-basic">
+            <thead>
+            <tr>
+              <th>Date</th>
+              <th>Category</th>
+              <th>Breakfast</th>
+              <th>Lunch</th>
+              <th>Dinner</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td rowspan="3">
+                {{food_reports?.date | date: 'dd-MM-yyyy'}}
+              </td>
+              <td>Not Required Food</td>
+              <td class="text-bold" style="color:red">{{food_reports?.breakfast}}</td>
+              <td class="text-bold" style="color:red">{{food_reports?.lunch}}</td>
+              <td class="text-bold" style="color:red">{{food_reports?.dinner}}</td>
+            </tr>
+            <tr>
+              <td>Actual Count</td>
+              <td>{{tenant_count}}</td>
+              <td>{{tenant_count}}</td>
+              <td>{{tenant_count}}</td>
+            </tr>
+            <tr>
+              <td>Required Food</td>
+              <td class="text-bold" style="color:#4CB6AC">{{tenant_count - food_reports?.breakfast}}</td>
+              <td class="text-bold" style="color:#4CB6AC">{{tenant_count - food_reports?.lunch}}</td>
+              <td class="text-bold" style="color:#4CB6AC">{{tenant_count - food_reports?.dinner}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <br/>
+    </div>
+  </div>
+  <div class="row" *ngIf="user?.role =='superadmin' || user?.role =='admin'">
+    <div class="col-md-2">
+      <div class="text-center">
+        <div class="text-size-small text-muted content-group-sm"></div>
+
+        <div class="svg-center" id="sa_pie_arc_legend"></div>
+      </div>
+      <div class="text-center">
+        <div class="text-size-small text-muted content-group-sm"></div>
+
+        <div class="svg-center" id="admin_pie_arc_legend"></div>
+      </div>
+      <div class="text-center">
+        <div class="text-size-small text-muted content-group-sm"></div>
+
+        <div class="svg-center" id="pgowner_pie_arc_legend"></div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="text-center">
+            <div class="text-size-small text-muted content-group-sm"></div>
+
+            <div class="svg-center" id="admin_delux_pie_arc_legend"></div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="text-center">
+            <div class="text-size-small text-muted content-group-sm"></div>
+
+            <div class="svg-center" id="admin_luxury_pie_arc_legend"></div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="text-center">
+            <div class="text-size-small text-muted content-group-sm"></div>
+
+            <div class="svg-center" id="admin_general_pie_arc_legend"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="text-center">
+        <div class="text-size-small text-muted content-group-sm"></div>
+
+        <div class="svg-center" id="tenant_pie_arc_legend"></div>
+      </div>
+      <div class="text-center">
+        <div class="text-size-small text-muted content-group-sm"></div>
+
+        <div class="svg-center" id="user_pie_arc_legend"></div>
+      </div>
+      <div class="text-center">
+        <div class="text-size-small text-muted content-group-sm"></div>
+
+        <div class="svg-center" id="pgstaff_pie_arc_legend"></div>
+      </div>
+    </div>
+  </div>
+
+  <br/>
+  <br/>
+
+  <div class="row" style="padding-top: 20px;" *ngIf="user?.role == 'pgowner'">
+    <div class="col-sm-12 col-md-4 col-lg-4">
+      <div class="text-center">
+        <div class="text-size-small text-muted content-group-sm"></div>
+
+        <div class="svg-center" id="pg_pie_arc_legend"></div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4 col-lg-4">
+      <div class="text-center">
+        <div class="text-size-small text-muted content-group-sm"></div>
+
+        <div class="svg-center" id="tenants_pie_arc_legend"></div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4 col-lg-4">
+      <div class="text-center">
+        <div class="text-size-small text-muted content-group-sm"></div>
+
+        <div class="svg-center" id="staff_pie_arc_legend"></div>
+      </div>
+    </div>
+  </div>
+
+  <br/>
+  <br/>
+  <div class="row" *ngIf="user?.role =='tenant'">
+    <div class="col-md-4">
+      <table class="table group-datatable-basic">
+        <thead>
+        <tr>
+          <th>Rent</th>
+          <th>Date</th>
+          <th>Amount</th>
+          <th>User</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr *ngFor="let expense of rent_expenses;let last=last; let i=index">
+          <td>
+            {{expense?.expense_item?.expense_item}}
+          </td>
+          <td>
+            {{expense?.date | date: 'dd/MM/yyyy'}}
+          </td>
+          <td>
+            {{expense?.amount | currency: 'INR': true}}
+          </td>
+          <td>
+            {{expense?.user?.firstName}}
+          </td>
+        </tr>
+        <tr [hidden]="rent_expenses.length == 0">
+          <td></td>
+          <td class="text-black">Total Paid Amount</td>
+          <td class="text-black">{{rent_amount | currency: 'INR': true}}</td>
+          <td></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-2"></div>
+  </div>
+
+
+</div>
+

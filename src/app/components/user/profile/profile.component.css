@@ -1,0 +1,15 @@
+
+.ui.segment,.box-header.with-border,.profilebox{
+  border:0px;
+  border-radius:0px;
+  box-shadow:none;
+}
+
+
+.disabled, fieldset:disabled{
+  opacity: 1 !important;
+}
+
+.ui.disabled.dropdown, .ui.dropdown .menu>.disabled.item {
+  opacity: 1 !important;
+}

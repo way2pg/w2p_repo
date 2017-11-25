@@ -1,0 +1,43 @@
+.ui.segment,.box-header.with-border,.tenantbox{
+  border:0px;
+  border-radius:0px;
+  box-shadow:none;
+}
+.imgIcon{
+  margin-top: -10px;
+}
+
+.roomIcon{
+  height: 50px;
+  width: 50px;
+  display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.ui.buttons{
+  float: right;
+}
+
+.card .content{
+  min-height: 210px !important;
+}
+
+.ui.cards > .card{
+  width: 250px;
+}
+.table-empty{
+  text-align: center;
+  color: #00B5AD;
+  font-size: larger;
+}
+
+.datatable-rooms {
+  border: 2px solid #37474F;
+}
+#map {
+    width: 100%;
+    height: 300px;
+}
+.save {
+  display: none;
+}

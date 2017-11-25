@@ -1,0 +1,45 @@
+
+.ui.segment,.box-header.with-border,.tenantbox{
+  border:0px;
+  border-radius:0px;
+  box-shadow:none;
+}
+.ui.buttons{
+  float: right;
+}
+
+.ui.ribbon.label{
+  font-size: 1rem;
+}
+.tenantsList{
+  max-height: 70vh;
+  overflow: auto;
+}
+.content{
+  min-height: auto;
+}
+.ui.icon.input{
+  width: 100%;
+}
+
+.box{
+  box-shadow:none;
+}
+
+.tenantSearch{
+  border: none;
+}
+.ui.instagram.button{
+  float: right;
+}
+.tenants{
+  margin-bottom: 0px;
+}
+
+.staff{
+  margin-top: 0px;
+}
+
+.groupname{
+  color: #116a9e;
+}

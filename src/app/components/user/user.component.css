@@ -1,0 +1,26 @@
+.media-left img:not(.media-preview) {
+  width: inherit !important;
+}
+
+.content {
+  min-height: 150px;
+}
+
+.media-body h1 {
+  margin-top: 25px;
+}
+
+.hide {
+  display: none;
+}
+
+.bg-success {
+  background-color: #18bc9c !important;
+  border-color: #18bc9c !important;
+  color: #fff
+}
+
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
+}

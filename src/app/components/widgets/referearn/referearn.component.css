@@ -1,0 +1,208 @@
+fieldset {
+  margin: 0;
+  min-width: 0;
+}
+fieldset, legend {
+  padding: 0;
+  border: 0;
+}
+legend {
+  width: 100%;
+  margin-bottom: 20px;
+  line-height: inherit;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.table-empty{
+  text-align: center;
+  color: #00B5AD;
+  font-size: larger;
+}
+.large{
+  left: -10px !important;
+}
+
+.refer-new-widget {
+  position: relative;
+  font-size: 14px;
+  font-family: "avenir",sans-serif;
+  color: white;
+  background: #5b2027 url(https://d2jkxa685yvbof.cloudfront.net/assets/refer/job_bg.jpg) no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.refer-new-widget section.section-landing {
+  display: flex;
+  justify-content: center;
+}
+.refer-new-widget .second {
+  text-align: center;
+}
+
+.refer-new-widget section {
+  display: table;
+  width: 100%;
+  position: relative;
+}
+
+.refer-new-widget .refer-faq-link {
+  position: absolute;
+  right: 50px;
+  top: 50px;
+  font-size: 16px;
+  z-index: 10;
+}
+.refer-new-widget .refer-faq-link a {
+  color: white;
+  text-decoration: underline;
+}
+
+.refer-new-widget section.section-landing .grid {
+  flex-direction: row;
+  align-self: center;
+  padding-bottom: 100px;
+}
+
+.grid {
+  width: 100%;
+  max-width: 1045px;
+  margin: 0 auto;
+  padding: 0 15px;
+  position: relative;
+}
+.refer-new-widget .job-logo {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+.refer-new-widget .sec-2 {
+  width: 550px;
+  margin: auto;
+  text-align: center;
+  padding: 10px 0;
+  padding-bottom: 20px;
+}
+.refer-new-widget .font-18 {
+  font-size: 17px;
+}
+.refer-new-widget h2 {
+  color: white;
+  text-align: center;
+  font-size: 25px;
+  line-height: 35px;
+  font-family: "avenir",sans-serif;
+  font-weight: bold;
+}
+.refer-new-widget .second .action-widget {
+  padding-top: 50px;
+  text-align: center;
+}
+.refer-new-widget .second .action-widget .btn-primary {
+  margin-right: 10px;
+  width: 150px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+}
+.refer-new-widget .btn-primary {
+  background-color: #ee1846;
+  border-color: #ee1846;
+}
+.refer-new-widget .text-bold {
+  font-weight: bold;
+}
+
+.refer-new-widget section {
+  display: table;
+  width: 100%;
+  position: relative;
+}
+.refer-new-widget .grid.small-grid {
+  max-width: 880px;
+}
+.refer-new-widget .pad-bottom-50 {
+  padding-bottom: 50px;
+}
+.refer-new-widget .second .col-md-4 {
+
+  min-height: 315px;
+}
+
+.refer-new-widget .second h3 {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #fddb00;
+}
+.refer-new-widget .second ul {
+  list-style-type: disc;
+}
+.refer-new-widget .second ul li {
+  text-align: left;
+  font-size: 15px;
+  padding-bottom: 20px;
+  padding-left: 0;
+}
+
+.refer-new-widget .second {
+  text-align: center;
+}
+
+.refer-new-widget .second .col-md-4 {
+
+  min-height: 315px;
+}
+
+.col-md-4{
+  float: left;
+  padding-right: 20px;
+}
+
+.clr {
+  clear: both;
+}
+.refer-new-widget .second .border-none {
+  border: 0;
+}
+
+
+@media only screen and (max-width: 767px) {
+  .refer-new-widget .sec-2 {
+    width: 100%
+  }
+  .refer-new-widget h2 {
+    font-size: 20px
+  }
+  .refer-new-widget .first p {
+    font-size: 15px
+  }
+  .refer-new-widget .refer-faq-link {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+  }
+  .refer-new-widget .action-widget .btn-primary {
+    margin-right: 10px;
+    width: 46% !important;
+    float: left
+  }
+  .refer-new-widget .login-wrapper {
+    margin: inherit !important;
+    margin-top: 60px !important;
+    width: 80% !important
+  }
+  .refer-new-widget .second .col-md-4 {
+    border-right: 0;
+    min-height: "auto";
+  }
+
+}
+.btn-primary {
+  color: #fff;
+  background-color: #00B5AD !important;
+  border-color: #00B5AD !important;
+}

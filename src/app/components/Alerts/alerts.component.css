@@ -1,0 +1,53 @@
+/*
+table{
+  table-layout: fixed;
+  width: 100%;
+}
+*/
+
+.alertButton{
+  float: right;
+}
+
+.ui.buttons{
+  float: right;
+}
+
+.ends{
+  margin-bottom: 10px;
+}
+
+.row{
+  margin-bottom: 1%;
+}
+
+.panel-body{
+  margin-left: 2%;
+}
+
+.repeats_every{
+  margin-left: 1%;
+}
+
+.corn{
+  text-align: center;
+  font-weight: bolder;
+  color: blue !important;
+}
+
+.column-align{
+  text-align: center;
+}
+
+.ui.segment {
+   position: relative;
+   background: inherit !important;
+   box-shadow: none !important;
+   margin: 1rem 0;
+   padding: 1em;
+   border-radius:none !important;
+   border: 0px !important;
+}
+.errorClass{
+  color: red;
+}

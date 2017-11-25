@@ -1,0 +1,10 @@
+.login-cover{
+  background: none !important;
+}
+.text-right{
+  margin-top: 2%;
+}
+
+.login-container .page-container .login-form {
+  width: 400px !important;
+}

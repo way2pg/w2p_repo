@@ -1,0 +1,36 @@
+
+.ui.segment, .box-header.with-border, .tenantbox {
+  border: 0px;
+  border-radius: 0px;
+  box-shadow: none;
+}
+
+.ui.buttons {
+  float: right;
+}
+
+.ui.ribbon.label {
+  font-size: 1rem;
+}
+
+.content {
+  min-height: 150px;
+}
+
+.text-info {
+  color: black !important;
+  margin: 8px;
+}
+
+.ui.form .disabled.field {
+  pointer-events: none;
+  opacity: 1 !important;
+}
+.content{
+  min-height: 0px !important;
+}
+
+.save {
+  display: none;
+}
+

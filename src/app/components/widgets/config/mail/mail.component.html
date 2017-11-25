@@ -1,0 +1,148 @@
+<div class="page-header page-header-default">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - Mail Configuration Details</h4>
+      <a class="heading-elements-toggle"><i class="icon-more"></i></a></div>
+  </div>
+
+  <div class="breadcrumb-line"><a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+    <ul class="breadcrumb">
+      <li><a [routerLink]="['/']"><i class="icon-home2 position-left"></i> Home</a></li>
+      <li><a [routerLink]="['/mail_templates']"><b><i class="icon-mailbox position-left"></i></b> Mail
+        Templates</a></li>
+      <li class="active"><i class="icon-pencil5 position-left"></i>Edit Mail Configurations</li>
+    </ul>
+
+    <app-settings></app-settings>
+    <ul class="breadcrumb-elements" >
+      <li hidden>
+        <button type="button" class="btn bg-teal-400" id="spinner"><i
+          class="icon-spinner4 spinner position-left"></i> Please wait loading data
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="content">
+  <div class="cbody tabbable">
+
+    <div class="panel panel-flat">
+      <div class="panel-body">
+      <div class="mail-config">
+        <table class="table mail-datatable-basic">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Host</th>
+            <th>Port</th>
+            <th>Secure</th>
+            <th>User</th>
+            <th>Password</th>
+            <th>Status</th>
+            <th class="text-center">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr *ngFor="let mail of configs;let last=last "
+              id="{{mail._id}}">
+            <td>
+              {{mail.name}}
+            </td>
+            <td>{{mail.host}}</td>
+            <td>{{mail.port}}</td>
+            <td>{{mail.secure}}</td>
+            <td>{{mail?.auth?.user}}</td>
+            <td>{{mail?.auth?.pass}}</td>
+            <td>
+              <span *ngIf="!mail.isEnabled">Disabled</span>
+              <span *ngIf="mail.isEnabled">Enabled</span>
+            </td>
+            <td class="text-center">
+              <ul class="icons-list">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="icon-menu9"></i>
+                  </a>
+
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a routerLinkActive="active" (click)="edit(mail)" data-toggle="modal"
+                           data-target="#edit_email_config"><i class="icon-pencil5"></i>Edit</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- Footer -->
+  <app-footer></app-footer>
+  <!-- /footer -->
+</div>
+
+
+<!-- Info modal -->
+<div id="edit_email_config" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-info">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h6 class="modal-title">Update Mail Configuration</h6>
+      </div>
+
+      <div class="modal-body">
+        <form role="form" class="ui form" novalidate>
+          <div class="form-group disabled">
+            <label>Name</label>
+            <input type="text" class="form-control" name="name" [value]="config.name" id="name" disabled>
+          </div>
+
+          <div class="form-group">
+            <label>Host</label>
+            <input type="text" class="form-control" name="host" id="host"
+                   [(ngModel)]="config.host">
+          </div>
+
+          <div class="form-group">
+            <label>Port</label>
+            <input type="text" class="form-control" name="port"
+                   [(ngModel)]="config.port">
+          </div>
+          <div class="form-group">
+            <label>User Name</label>
+            <input type="text" class="form-control" name="username"
+                   [(ngModel)]="config.auth.user">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="text" class="form-control" name="password"
+                   [(ngModel)]="config.auth.pass">
+          </div>
+          <div class="form-group">
+            <label>Status</label>
+            <select class="select status" name="status" id="status">
+              <option></option>
+              <option value="true">Enable</option>
+              <option value="false">Disable</option>
+            </select>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-info" (click)="update()" data-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /info modal -->
+
+

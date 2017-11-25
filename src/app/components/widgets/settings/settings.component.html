@@ -1,0 +1,63 @@
+<ul class="breadcrumb-elements" [hidden]="showLeftMenu()">
+  <li> <a routerLink="/support">
+    <i class="icon-lifebuoy position-left"></i>
+    Support
+  </a></li>
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      <i class="icon-gear position-left"></i>
+      Settings
+      <span class="caret"></span>
+    </a>
+
+    <ul class="dropdown-menu dropdown-menu-right" *ngIf="user?.role =='superadmin' || user?.role =='admin'">
+      <li>
+        <a  [routerLink]="['/config/mail']">
+          <i  class=" icon-mailbox position-left"></i><span>Mail Configuration</span></a>
+      </li>
+      <li>
+        <a  [routerLink]="['/mail_templates']">
+          <i  class=" icon-mailbox position-left"></i><span>Mail Templates</span></a>
+      </li>
+      <li>
+        <a  [routerLink]="['/config/sms']">
+          <i  class="icon-comments position-left"></i><span>SMS Configuration</span></a>
+      </li>
+      <li>
+        <a  [routerLink]="['/sms_templates']">
+          <i  class=" icon-mailbox position-left"></i><span>SMS Templates</span></a>
+      </li>
+      <li>
+        <a  [routerLink]="['/mongo']">
+          <i  class=" icon-database2 position-left"></i><span>Application Database</span></a>
+      </li>
+      <li>
+        <a  [routerLink]="['/config']" >
+          <i  class=" icon-gear position-left"></i><span>Configurations</span></a>
+      </li>
+      <li>
+        <a  [routerLink]="['/changelog']">
+          <i  class="icon-history position-left"></i>
+          <span>Changelog</span>
+          <span  class="label label-inline position-right bg-blue-400">1.0</span>
+        </a>
+      </li>
+      <li >
+        <a  data-target="#change_password" data-toggle="modal">
+          <i  class="icon-history position-left"></i>
+          <span>Change Password</span>
+        </a>
+      </li>
+    </ul>
+    <ul class="dropdown-menu dropdown-menu-right" *ngIf="!(user?.role =='superadmin' || user?.role =='admin')">
+      <li >
+        <a  data-target="#change_password" data-toggle="modal">
+          <i  class="icon-history position-left"></i>
+          <span>Change Password</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+
+</ul>
+

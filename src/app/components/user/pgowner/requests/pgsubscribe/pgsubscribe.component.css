@@ -1,0 +1,14 @@
+.ui.buttons{
+  float : right;
+  margin-top: 5%;
+}
+.content{
+  min-height: 150px;
+}
+.ui.raised.segment{
+  box-shadow: none !important;
+  border: none !important;
+}
+.box-header.with-border{
+  border-bottom: none;
+}

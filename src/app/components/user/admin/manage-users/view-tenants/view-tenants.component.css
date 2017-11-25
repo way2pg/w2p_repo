@@ -1,0 +1,124 @@
+.table-empty{
+  text-align: center;
+  color: #00B5AD;
+  font-size: larger;
+}
+
+th {
+  white-space: nowrap;
+}
+.ui.segment,.box-header.with-border,.tenantbox{
+  border:0px;
+  border-radius:0px;
+  box-shadow:none;
+}
+.ui.buttons{
+  float: right;
+}
+
+.ui.ribbon.label{
+  font-size: 1rem;
+}
+
+.ui.card, .ui.cards>.card{
+  width: 250px;
+}
+
+.content{
+  min-height: 150px;
+}
+i.checkmark.icon{
+  color : green;
+  font-size: 1.2em;
+}
+
+i.remove.icon{
+  color : red;
+  font-size: 1.2em;
+}
+
+i.remove.icon.deleteUser{
+  color:#116a9e;
+  font-size: 1.2em;
+}
+.table-empty{
+  text-align: center;
+  color: #00B5AD;
+  font-size: larger;
+}
+
+.ui.segment,.box-header.with-border,.profilebox{
+  border:0px;
+  border-radius:0px;
+  box-shadow:none;
+}
+
+.ui.ribbon.label{
+  font-size: 1rem;
+}
+
+.content{
+  min-height: 150px;
+}
+.bg-info {
+  background-color: #37474F;
+  border-color: #37474F;
+  color: #fff;
+}
+
+.btn-info {
+  color: #fff;
+  background-color: #37474F;
+  border-color: #37474F;
+}
+
+.dataTable thead .sorting:before {
+  content: '\e9c1';
+  margin-top: -2px;
+  color: white;
+}
+
+.dataTable thead .sorting:after {
+  content: '\e9c2';
+  margin-top: -10px;
+  color: white;
+}
+
+thead {
+  background-color: #37474F;
+  border-color: #37474F;
+  color: #fff;
+}
+
+.data-table-count {
+  border: 2px solid #37474F;
+}
+
+.bg-teal-400 {
+  background-color: #37474F;
+  border-color: #37474F;
+  color: #fff;
+}
+.daterange-predefined{
+  margin-top: -10px;
+}
+
+.panel-default > .panel-heading {
+  color: #333333;
+  background-color: #fcfcfc;
+  border-color: white !important;
+}
+
+.msg{
+  text-align: center;
+  padding-top: 10px;
+}
+
+.badge{
+  font-size: 15px;
+  letter-spacing: 0.1px;
+  vertical-align: baseline;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 100px;
+}

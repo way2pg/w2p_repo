@@ -1,0 +1,54 @@
+<div class="right floated">
+  <button class="ui instagram right labeled icon button" (click)="createGroup()">
+    <i class="right arrow icon"></i>
+    Create Groups
+  </button>
+  <button class="ui instagram button" (click)="showSMSComponent()">
+    Send SMS
+  </button>
+</div>
+<br/>
+<br/>
+
+<form class="form send_mail">
+  <h4 class="ui dividing header">Send Email </h4>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label>To</label>
+        <input type="text" placeholder="To Mail Ids" name="to" id="to" class="form-control toMailtags"
+               [(ngModel)]="mail.to">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label>CC</label>
+        <input type="text" placeholder="CC Mail Ids" name="cc" id="cc" class="form-control ccMailtags"
+               [(ngModel)]="mail.cc">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label>Subject</label>
+        <input type="text" placeholder="Mail Subject" name="subject" id="subject" class="form-control"
+               [(ngModel)]="mail.subject">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label>Body</label>
+        <textarea rows="6" cols="6" class="form-control" name="body" placeholder="Enter your message here"
+                  [(ngModel)]="mail.body"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="ui buttons">
+    <button class="ui instagram button" (click)="sendMail()">Send Mail</button>
+  </div>
+</form>

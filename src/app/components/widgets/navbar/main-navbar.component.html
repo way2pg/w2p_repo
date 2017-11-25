@@ -1,0 +1,302 @@
+<div class="navbar navbar-inverse">
+  <!-- Main navbar -->
+  <div class="navbar navbar-inverse">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="/home"><h3>Way2PG</h3></a>
+
+      <ul class="nav navbar-nav pull-right visible-xs-block">
+        <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+      </ul>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar-mobile">
+      <ul class="nav navbar-nav" [hidden]="showLeftMenu()">
+        <li>
+          <a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a></li>
+        <li>
+          <a class="sidebar-control sidebar-main-hide hidden-xs" data-popup="tooltip" title="Hide Left Menu"
+             data-placement="bottom" data-container="body">
+            <i class="icon-transmission"></i>
+          </a>
+        </li>
+        <li>
+          <a class="sidebar-control sidebar-opposite-fix hidden-xs" data-popup="tooltip" title="Contacts" id="contacts"
+             data-placement="bottom" data-container="body" data-original-title="Opposite - fix main">
+            <i class="icon-lan3"></i>
+          </a>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <!--<li [hidden]="showLeftMenu()">
+          <div class="ui fluid category pgsearch" style="margin-top: 4px;">
+            <div class="ui icon input">
+              <input class="prompt" type="text" placeholder="Search PGs,Rooms ..." name="search_data" [(ngModel)]="search_data" (keydown)="search($event)">
+              <i class="search icon"></i>
+            </div>
+            <div class="results"></div>
+          </div>
+        </li>-->
+        <li *ngIf="user?.role =='superadmin' || user?.role =='admin'" [routerLinkActive]="['active']">
+          <a data-toggle="modal"
+             data-target="#modal_users">
+            <i class=" icon-user-plus position-left"></i>
+            Create Account
+          </a>
+        </li>
+
+        <li [routerLinkActive]="['active']">
+          <a routerLink="/support">
+            <i class="icon-lifebuoy position-left"></i>
+            Support
+          </a>
+        </li>
+        <li [routerLinkActive]="['active']">
+          <a data-toggle="modal" data-target="#modal_theme_info"> <i class="icon-phone-wave postion-left"></i> Talk to
+            us</a>
+        </li>
+        <li [routerLinkActive]="['active']">
+          <a routerLink="/howitworks">
+            How it works
+          </a>
+        </li>
+        <li [routerLinkActive]="['active']">
+          <a routerLink="/referrals_home">
+            Refer & Earn
+          </a>
+        </li>
+        <li [routerLinkActive]="['active']">
+          <a [routerLink]="['/auth/login']" *ngIf="!isLoggedIn()">Login</a>
+        </li>
+        <li [routerLinkActive]="['active']">
+          <a [routerLink]="['/auth/register']" *ngIf="!isLoggedIn()">Register</a>
+        </li>
+        <!-- <li class="dropdown" *ngIf="isLoggedIn()">
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+             <i class="icon-bubbles4"></i>
+             <span class="visible-xs-inline-block position-right">Messages</span>
+             <span class="badge bg-warning-400">2</span>
+           </a>
+         </li>-->
+        <li class="dropdown dropdown-user" *ngIf="isLoggedIn()">
+          <a class="dropdown-toggle" data-toggle="dropdown">
+            <img [src]="getImage(user?.profileImg)" alt="">
+            <span>{{user?.displayName}}</span>
+            <i class="caret"></i>
+          </a>
+
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li [routerLinkActive]="['active']"><a routerLink="/user/profile"><i class="icon-user-plus"></i> My
+              profile</a></li>
+            <li [routerLinkActive]="['active']"><a routerLink="/dashboard"><i
+              class="icon-display4 position-left"></i> Dashboard</a></li>
+            <!--<li [routerLinkActive]="['active']"><a href="#"><span class="badge badge-warning pull-right">58</span> <i
+              class="icon-comment-discussion"></i>
+              Messages</a></li>-->
+            <li [routerLinkActive]="['active']">
+              <a data-target="#change_password" data-toggle="modal">
+                <i class="icon-history position-left"></i>
+                <span>Change Password</span>
+              </a>
+            </li>
+            <li class="divider"></li>
+            <!--<li [routerLinkActive]="['active']"><a href="#"><i class="icon-cog5"></i> Account settings</a></li>-->
+            <li [routerLinkActive]="['active']"><a routerLinkActive="active" (click)="onLogout()"
+                                                   *ngIf="isLoggedIn()"><i class="icon-switch2"></i>
+              Logout</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /main navbar -->
+</div>
+<!-- Info modal -->
+<div id="modal_theme_info" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-info">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h6 class="modal-title">Talk to us!</h6>
+      </div>
+
+      <div class="modal-body">
+        <div class="media">
+          <a href="#" class="media-left"><img src="assets/love/callus.PNG"></a>
+          <div class="media-body">
+            <h3 class="media-heading no-margin text-light">Life is too short to be waiting
+              around.</h3>
+            <div class="text-muted">
+              &nbsp;Get an expert to help you
+            </div>
+            <br/>
+            <div class="input-group">
+              <span class="input-group-addon callmeb">+91</span>
+              <input type="text" class="form-control" placeholder="Leave your number here">
+              <span class="input-group-btn">
+											<button class="btn callme" type="button">Call Me</button>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Info modal -->
+<div id="change_password" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-info">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h6 class="modal-title">Change Password</h6>
+      </div>
+
+      <div class="modal-body">
+        <form class="modal-body ui form">
+          <div class="field">
+            <label>Current Password</label>
+            <div class="ui left icon input">
+              <input type="password" name="password_1" placeholder="New password" [(ngModel)]="oldPassword">
+              <i class="lock icon"></i>
+            </div>
+          </div>
+          <div class="field">
+            <label>New Password</label>
+            <div class="ui left icon input">
+              <input type="password" name="password_1" placeholder="New password" [(ngModel)]="password">
+              <i class="lock icon"></i>
+            </div>
+          </div>
+          <div class="field">
+            <label>Repeat password</label>
+            <div class="ui left icon input">
+              <input type="password" name="password_2" placeholder="Repeat password" [(ngModel)]="password_2">
+              <i class="lock icon"></i>
+            </div>
+          </div>
+        </form>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-info" (click)="change()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /info modal -->
+<div id="modal_users" class="modal fade">
+  <form class="modal-body ui form account">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-info">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h6 class="modal-title">Create Account</h6>
+        </div>
+
+        <div class="modal-body">
+          <!-- Form -->
+          <div class="field">
+            <div class="two fields">
+              <div class="field">
+                <label>Name</label>
+                <div class="ui left icon input">
+                  <input type="text" name="username" placeholder="Name" [(ngModel)]="account.firstName">
+                  <i class="user icon"></i>
+                </div>
+              </div>
+              <div class="field">
+                <label>Gender</label>
+                <div class="ui compact selection dropdown gender">
+                  <input type="hidden" name="gender" id="gender" [(ngModel)]="account.gender">
+                  <i class="dropdown icon"></i>
+                  <div class="default text">Gender</div>
+                  <div class="menu">
+                    <div class="item" data-value="male" data-text="Male">
+                      <i class="male icon"></i>
+                      Male
+                    </div>
+                    <div class="item" data-value="female" data-text="Female">
+                      <i class="female icon"></i>
+                      Female
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <div class="two fields">
+              <div class="field">
+                <label>Email</label>
+                <div class="ui left icon input">
+                  <input type="text" name="email" placeholder="Email" [(ngModel)]="account.email">
+                  <i class="mail icon"></i>
+                </div>
+              </div>
+              <div class="field">
+                <label>Password</label>
+                <div class="ui left icon input">
+                  <input type="text" name="password" placeholder="Password" [(ngModel)]="account.password">
+                  <i class="lock icon"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <div class="two fields">
+              <div class="field">
+                <label>Mobile</label>
+                <div class="ui left icon input">
+                  <input type="text" name="mobile" placeholder="Mobile" [(ngModel)]="account.mobile">
+                  <i class="large mobile icon"></i>
+                </div>
+              </div>
+              <div class="field">
+                <label>Role</label>
+                <div class="ui compact selection dropdown role">
+                  <input type="hidden" name="role" id="role">
+                  <i class="dropdown icon"></i>
+                  <div class="default text">Role</div>
+                  <div class="menu">
+                    <div class="item" data-value="superadmin" data-text="Super Admin" *ngIf="user?.role =='superadmin'">
+                      Super Admin
+                    </div>
+                    <div class="item" data-value="admin" data-text="Admin">
+                      Admin
+                    </div>
+                    <div class="item" data-value="pgowner" data-text="PG Owner">
+                      PG Owner
+                    </div>
+                    <div class="item" data-value="tenant" data-text="Tenant">
+                      Tenant
+                    </div>
+                    <div class="item" data-value="pgstaff" data-text="PG Staff">
+                      PG Staff
+                    </div>
+                    <div class="item" data-value="user" data-text="user">
+                      User
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- /form -->
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-info submit button">Create Account</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,12 @@
+.field input{
+  border: none;
+}
+.ui.buttons{
+  float: right;
+  margin-right: 10px;
+}
+thead {
+  background-color: #37474F;
+  border-color: #37474F;
+  color: #fff;
+}

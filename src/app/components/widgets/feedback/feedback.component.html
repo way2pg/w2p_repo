@@ -1,0 +1,82 @@
+<div class="page-header page-header-default">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - Feedback or Ratings</h4>
+      <a class="heading-elements-toggle"><i class="icon-more"></i></a></div>
+    <div class="heading-elements">
+      <div class="heading-btn-group" >
+
+      </div>
+    </div>
+  </div>
+
+  <div class="breadcrumb-line"><a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+    <ul class="breadcrumb">
+      <li><a [routerLink]="['/']"><i class="icon-home2 position-left"></i> Home</a></li>
+      <li class="active">Feedback or Ratings</li>
+    </ul>
+
+    <app-settings></app-settings>
+
+  </div>
+</div>
+<div class="content">
+  <div class="tabbable">
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <form role="form" class="ui form" (ngSubmit)="f.form.valid && save($event)" #f="ngForm" novalidate>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-3" *ngFor="let feedback of feedbacks;let last=last" [ratings]="last ? true : false">
+                    <label>{{feedback.key}}</label> <br/>
+                    <div class="ui large star rating" data-max-rating="5">
+
+                    </div>
+                  </div>
+                </div>
+                <br/>
+                <div class="field">
+                  <label>Your Comments</label>
+            <textarea name="comments" class="form-control mb-15" rows="3" cols="1"
+                      placeholder="What's on your mind?" [(ngModel)]="feedback.comments">
+
+            </textarea>
+                </div>
+                <div class="row">
+                  <div class="col-xs-6">
+                    <ul class="icons-list icons-list-extended mt-10">
+                      <li><a href="#" data-popup="tooltip" title="Add photo" data-container="body">
+                        <!--<i class="icon-images2"></i>--></a></li>
+                      <li><a href="#" data-popup="tooltip" title="Add video" data-container="body">
+                        <!--<i class="icon-film2"></i>--></a></li>
+                      <li><a href="#" data-popup="tooltip" title="Add event" data-container="body">
+                        <!--<i class="icon-calendar2"></i>--></a></li>
+                    </ul>
+                  </div>
+
+                  <div class="col-xs-6 text-right">
+                    <button class="btn btn-primary-right">
+                      Send Feedback
+                      <b><i class="icon-circle-right2 position-right"></i></b>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!--<div class="col-md-6">
+                <span style="text-align: center">Ads will be displayed here</span>
+              </div>-->
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <app-footer></app-footer>
+  <!-- /footer -->
+</div>

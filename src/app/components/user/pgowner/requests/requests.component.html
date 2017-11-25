@@ -1,0 +1,259 @@
+<div class="page-header page-header-default">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - Service Requests
+      </h4>
+      <a class="heading-elements-toggle"><i class="icon-more"></i></a></div>
+  </div>
+
+  <div class="breadcrumb-line"><a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+    <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+    <ul class="breadcrumb">
+      <li><a [routerLink]="['/']"><i class="icon-home2 position-left"></i> Home</a></li>
+      <li class="active">Service Requests</li>
+    </ul>
+
+    <app-settings></app-settings>
+  </div>
+</div>
+<div class="content">
+  <!-- User profile -->
+  <div class="cbody">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="tabbable">
+
+          <div class="panel panel-flat">
+            <div class="panel-heading">
+
+            </div>
+
+            <div class="panel-body">
+              <div class="table">
+                <table class="table datatable-request">
+                  <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+
+                  <tr *ngFor="let request of requests;let i = index; " (click)="onFullHistory(request,i)"
+                      [class.active]="i == selectedRow">
+                    <td>
+                      <div class="media-left media-middle">
+                        <a [routerLink]="['/user/profile',request?.tenant?._id]"><img
+                          src="{{request?.tenant?.profileImg}}" class="img-circle img-xs" alt=""></a>
+                      </div>
+
+                      <div class="media-body">
+                        <a [routerLink]="['/user/profile',request?.tenant?._id]"
+                           class="display-inline-block text-default text-bold letter-icon-title">
+                          {{request?.tenant?.firstName}}
+                        </a>
+                        <div class="text-muted text-size-small"><a><i class="icon-mobile"></i>{{request?.tenant?.mobile}}</a>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="label bg-blue">{{request?.status}}</span></td>
+                    <td><span *ngIf="i == selectedRow"><i class=" icon-point-right position-right"
+                                                          style="color: #37474F;"></i> </span></td>
+                  </tr>
+
+                  </tbody>
+                </table>
+                <br/>
+              </div>
+            </div>
+            <br/>
+            <br/>
+          </div>
+
+
+          <div class="panel panel-flat border-top-warning">
+            <div class="panel-heading">
+              <!-- <h6 class="panel-title"><span class="text-semibold">
+                 <span>Ads by </span> </span> OursPG</h6>-->
+            </div>
+
+            <div class="panel-body">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="tabbable">
+
+          <div class="panel panel-flat">
+            <div class="panel-heading">
+              <div class="heading-elements">
+                <ul class="chart-widget-legend icons-list">
+                  <li data-slice="0"
+                      style="border-bottom: 2px solid rgb(41, 182, 246); opacity: 1; transition: all 0.15s ease-in-out;">
+                    In Progress : <span style="color: rgb(41, 182, 246);font-weight: bold;">{{inprogress}}</span></li>
+                  <li data-slice="1"
+                      style="border-bottom: 2px solid rgb(102, 187, 106); opacity: 1; transition: all 0.15s ease-in-out;">
+                    Pending : <span style="color: rgb(102, 187, 106);font-weight: bold">{{pending}}</span></li>
+                  <li data-slice="2"
+                      style="border-bottom: 2px solid rgb(239, 83, 80); opacity: 1; transition: all 0.15s ease-in-out;">
+                    Resolved :
+                    <span style="color: rgb(239, 83, 80);font-weight: bold">{{resolved}}</span></li>
+                  <li data-slice="3"
+                      style="border-bottom: 2px solid #37474F; opacity: 1; transition: all 0.15s ease-in-out;">
+                    Closed :
+                    <span style="color: #37474F;font-weight: bold">{{closed}}</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="panel-body">
+              <br/>
+              <br/>
+              <div class="datatable ui form">
+                <div class="field">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="field">
+                        <label>Request Number</label>
+                        <span>{{modelData?.request_number}}</span>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="field">
+                        <label>Request Type</label>
+                        <span>{{modelData?.type}}</span>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="field">
+                        <label>Status</label>
+                        <div class="ui selection dropdown col-md-3 status">
+                          <input type="hidden" name="status">
+                          <i class="dropdown icon"></i>
+                          <div class="default text">Status</div>
+                          <div class="menu">
+                            <div class="item" data-value="Pending">Pending</div>
+                            <div class="item" data-value="In Progress">In Progress</div>
+                            <div class="item" data-value="Resolved">Resolved</div>
+                            <div class="item" data-value="Closed">Closed</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <br/>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="field">
+                        <label>First Name</label>
+                        <label>{{modelData?.tenant?.firstName}}</label>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="field">
+                        <label>Email</label>
+                        <span>{{modelData?.tenant?.email}}</span>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="field">
+                        <label>Mobile</label>
+                        <span>{{modelData?.tenant?.mobile}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <ul class="media-list chat-list content-group" id="content-group">
+                  <li class="{{getClass(comment)}}"
+                      *ngFor="let comment of modelData?.comments; let i=index; ">
+                    <div class="media-left" *ngIf="!comment.owner">
+                      <a [routerLink]="['/user/profile',modelData?.tenant._id]">
+                        <img src="{{modelData?.tenant.profileImg}}" class="img-circle img-md" alt="">
+                      </a>
+                    </div>
+
+                    <div class="media-body" *ngIf="!comment.owner">
+                      <div class="media-content">{{comment?.comment}}</div>
+                      <span class="media-annotation display-block mt-10">{{fromNow(comment?.createdAt)}}</span>
+                    </div>
+
+                    <div class="media-body" *ngIf="comment.owner">
+                      <div class="media-content">{{comment?.comment}}</div>
+                      <span class="media-annotation display-block mt-10">{{fromNow(comment?.createdAt)}}</span>
+                    </div>
+
+                    <div class="media-right" *ngIf="comment.owner">
+                      <a [routerLink]="['/user/profile',modelData?.owner._id]">
+                        <img src="{{modelData?.owner.profileImg}}" class="img-circle img-md" alt="">
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+                        <textarea name="enter-message" class="form-control content-group" rows="3" cols="1"
+                                  placeholder="Enter your message..." [(ngModel)]="comment"></textarea>
+                <div class="text-right">
+                  <button type="button" class="btn bg-teal-400-right"
+                          (click)="updateRequest()"><b><i
+                    class="icon-circle-right2 position-right"></i></b> Send
+                  </button>
+                </div>
+              </div>
+            </div>
+            <br/>
+            <br/>
+          </div>
+
+
+          <div class="panel panel-flat border-top-warning">
+            <div class="panel-heading">
+              <!-- <h6 class="panel-title"><span class="text-semibold">
+                 <span>Ads by </span> </span> OursPG</h6>-->
+            </div>
+
+            <div class="panel-body">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+
+        <!-- Navigation -->
+        <div class="panel panel-flat">
+          <div class="panel-heading">
+            <h6 class="panel-title"></h6>
+            <div class="heading-elements">
+
+            </div>
+          </div>
+        </div>
+        <!-- /navigation -->
+
+
+        <!-- Share your thoughts -->
+        <div class="panel panel-flat">
+          <div class="panel-heading">
+            <h6 class="panel-title"></h6>
+            <div class="heading-elements">
+              <ul class="icons-list">
+                <li></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel-body">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /user profile -->
+
+  <!-- Footer -->
+  <app-footer></app-footer>
+  <!-- /footer -->
+</div>

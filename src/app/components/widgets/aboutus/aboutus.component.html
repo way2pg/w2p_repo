@@ -1,0 +1,42 @@
+<div class="page-header page-header-default">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - About Us</h4>
+      <a class="heading-elements-toggle"><i class="icon-more"></i></a></div>
+  </div>
+
+  <div class="breadcrumb-line"><a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+    <ul class="breadcrumb">
+      <li><a [routerLink]="['/']"><i class="icon-home2 position-left"></i> Home</a></li>
+      <li class="active">About Us</li>
+    </ul>
+
+    <ul class="breadcrumb-elements" *ngIf="checkAdmin()">
+      <li><a (click)="edit()"
+             *ngIf="!isEditing"><i class="icon-pencil7 position-left"></i> Edit</a></li>
+      <li><a (click)="save()"
+             *ngIf="isEditing"><i class="icon-pencil7 position-left"></i> Save</a></li>
+    </ul>
+    <app-settings></app-settings>
+  </div>
+</div>
+<div class="content">
+  <div class="cbody">
+    <div class="panel panel-flat">
+      <div class="panel-heading">
+      </div>
+
+      <div class="panel-body">
+        <div class="summernote">
+          <div [innerHTML]="aboutus.aboutus" id="code_preview">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <app-footer></app-footer>
+  <!-- /footer -->
+</div>

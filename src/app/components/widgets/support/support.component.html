@@ -1,0 +1,215 @@
+<div class="page-header page-header-default">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Home</span> - Support Page</h4>
+      <a class="heading-elements-toggle"><i class="icon-more"></i></a></div>
+  </div>
+
+  <div class="breadcrumb-line"><a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+    <ul class="breadcrumb">
+      <li><a routerLink="/home"><i class="icon-home2 position-left"></i> Home</a></li>
+      <li class="active">Support Page</li>
+    </ul>
+
+   <app-settings></app-settings>
+  </div>
+</div>
+<div class="content">
+  <div class="cbody">
+    <div class="panel panel-flat">
+      <div class="panel-heading">
+        <h5 class="panel-title">Support Page<a class="heading-elements-toggle"><i class="icon-more"></i></a></h5>
+      </div>
+
+      <div class="panel-body">
+        <!--<form action="#" class="main-search">
+          <div class="input-group content-group">
+            <div class="has-feedback has-feedback-left">
+              <input type="text" class="form-control input-xlg" placeholder="What are you looking for?">
+              <div class="form-control-feedback">
+                <i class="icon-search4 text-muted text-size-base"></i>
+              </div>
+            </div>
+
+            <div class="input-group-btn">
+              <button type="submit" class="btn btn-primary btn-xlg">Search</button>
+            </div>
+          </div>
+        </form>-->
+        <div class="row">
+          <div class="col-lg-6">
+            <h4 class="ui horizontal divider header">
+              <i class="fa fa-support"></i>
+              FAQ's
+            </h4>
+            <form role="form" class="modal-body ui form faq" *ngIf="isLoggedIn() && user.role =='admin'">
+              <div class="field">
+                <div class="field">
+                  <div class="field">
+                    <label>Question
+                      <span class="mandatory">*</span>
+                    </label>
+                    <input type="text" name="question" placeholder="Question ?" [(ngModel)]="faq.question">
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label>Answer
+                  <span class="mandatory">*</span>
+                </label>
+                    <textarea name="comments" class="form-control mb-15" rows="7" cols="1" placeholder="Answer"
+                              [(ngModel)]="faq.answer"></textarea>
+              </div>
+              <div class="row">
+                <div class="col-xs-6">
+                  <ul class="icons-list icons-list-extended mt-10">
+                    <li><a href="#" data-popup="tooltip" title="Add photo" data-container="body">
+                      <!--<i class="icon-images2"></i>--></a></li>
+                    <li><a href="#" data-popup="tooltip" title="Add video" data-container="body">
+                      <!--<i class="icon-film2"></i>--></a></li>
+                    <li><a href="#" data-popup="tooltip" title="Add event" data-container="body">
+                      <!--<i class="icon-calendar2"></i>--></a></li>
+                  </ul>
+                </div>
+
+                <div class="col-xs-6 text-right">
+                  <button class="btn btn-primary-right submit" type="button" id="faq">
+                    Add
+                    <b><i class="icon-circle-right2 position-right"></i></b>
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <table class="table datatable-basic">
+              <thead>
+              <tr>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+
+              <tr *ngFor="let faq of faqs;let last=last" [datatable]="last ? true : false">
+                <td>
+                  <div class="faq panel-group panel-group-control panel-group-control-right ">
+                    <div class="panel panel-white">
+                      <div class="panel-heading">
+                        <h6 class="panel-title">
+                          <div class="heading-elements">
+                            <ul class="icons-list">
+                              <li *ngIf="isLoggedIn() && user.role =='admin'"><a><i class="icon-database-edit2"
+                                                                                    (click)="edit(faq)"></i></a>
+                              </li>
+                              <li *ngIf="isLoggedIn() && user.role =='admin'"><a (click)="delete(faq._id)"><i
+                                class="icon-x"></i></a></li>
+                            </ul>
+                          </div>
+                          <a class="collapsed" data-toggle="collapse" href="#{{faq._id}}">
+                            <i class="icon-help position-left text-slate"></i>{{faq.question}}
+                          </a>
+                        </h6>
+                      </div>
+
+                      <div id="{{faq._id}}" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          {{faq.answer}}
+                        </div>
+
+                        <div class="panel-footer panel-footer-transparent"><a class="heading-elements-toggle"><i
+                          class="icon-more"></i></a>
+                          <div class="heading-elements">
+                            <span class="text-muted heading-text">Latest update: Apr 3, 2015</span>
+
+                            <ul class="list-inline list-inline-condensed heading-text pull-right">
+                              <li><a href="#" class="text-primary"><i
+                                class="icon-thumbs-up2 position-left"></i></a> 479
+                              </li>
+                              <li><a href="#" class="text-muted"><i
+                                class="icon-thumbs-down2 position-left"></i></a> 17
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              </tbody>
+            </table>
+
+
+          </div>
+          <div class="col-lg-6">
+            <h4 class="ui horizontal divider header">
+              <i class="fa fa-support"></i>
+              Contact support
+            </h4>
+            <form role="form" class="ui form support" novalidate>
+              <div class="field">
+                <div class="two fields">
+                  <div class="field">
+                    <label>First Name
+                      <span class="mandatory">*</span>
+                    </label>
+                    <input type="text" name="name" placeholder="First Name" [(ngModel)]="support.name">
+                  </div>
+                  <div class="field">
+                    <label>Email
+                      <span class="mandatory">*</span>
+                    </label>
+                    <input type="text" name="email" placeholder="Email" [(ngModel)]="support.email">
+                  </div>
+                </div>
+                <div class="two fields">
+                  <div class="field">
+                    <label>Mobile
+                      <span class="mandatory">*</span>
+                    </label>
+                    <input type="text" name="mobile" placeholder="Mobile Number" [(ngModel)]="support.mobile">
+                  </div>
+                  <div class="field">
+                    <label>Location
+                      <span class="mandatory">*</span>
+                    </label>
+                    <input type="text" name="location" placeholder="Location" [(ngModel)]="support.location">
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label>Your message
+                  <span class="mandatory">*</span>
+                </label>
+                    <textarea name="comments" class="form-control mb-15" rows="3" cols="1"
+                              placeholder="What's on your mind?" [(ngModel)]="support.comments"></textarea>
+              </div>
+              <div class="row">
+                <div class="col-xs-6">
+                  <ul class="icons-list icons-list-extended mt-10">
+                    <li><a href="#" data-popup="tooltip" title="Add photo" data-container="body"></a></li>
+                    <li><a href="#" data-popup="tooltip" title="Add video" data-container="body"></a></li>
+                    <li><a href="#" data-popup="tooltip" title="Add event" data-container="body"></a></li>
+                  </ul>
+                </div>
+
+                <div class="col-xs-6 text-right">
+                  <button class="btn btn-primary-right submit button" type="submit">
+                    Send Message
+                    <b><i class="icon-circle-right2 position-right"></i></b>
+                  </button>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <app-footer></app-footer>
+  <!-- /footer -->
+</div>
